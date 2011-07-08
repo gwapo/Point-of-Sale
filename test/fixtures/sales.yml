@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  customer_id: 1
+  employee_id: 1
+  comments: MyText
+  sale_detail_id: 1
+  payment_type: MyString
+  amount: 9.99
+
+two:
+  customer_id: 1
+  employee_id: 1
+  comments: MyText
+  sale_detail_id: 1
+  payment_type: MyString
+  amount: 9.99
