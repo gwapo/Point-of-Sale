@@ -24,6 +24,7 @@ class SuppliersController < ApplicationController
   # GET /suppliers/new
   # GET /suppliers/new.xml
   def new
+
     @supplier = Supplier.new
 
     respond_to do |format|
@@ -81,3 +82,4 @@ class SuppliersController < ApplicationController
     end
   end
 end
+

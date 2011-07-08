@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  category: MyString
+  supplier_id: 1
+  descriptions: MyText
+  cost_price: 9.99
+  unit_cost: 9.99
+  quantity: 1
+
+two:
+  name: MyString
+  category: MyString
+  supplier_id: 1
+  descriptions: MyText
+  cost_price: 9.99
+  unit_cost: 9.99
+  quantity: 1
