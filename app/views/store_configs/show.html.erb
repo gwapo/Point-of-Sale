@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company name:</b>
+  <%= @store_config.company_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @store_config.email %>
+</p>
+
+<p>
+  <b>Fax:</b>
+  <%= @store_config.fax %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @store_config.phone %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @store_config.website %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @store_config.address %>
+</p>
+
+
+<%= link_to 'Edit', edit_store_config_path(@store_config) %> |
+<%= link_to 'Back', store_configs_path %>
