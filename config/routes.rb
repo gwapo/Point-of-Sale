@@ -1,4 +1,6 @@
 Mypos::Application.routes.draw do
+  resources :employees
+
   resources :suppliers
 
   resources :store_configs
