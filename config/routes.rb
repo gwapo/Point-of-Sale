@@ -1,4 +1,6 @@
 Mypos::Application.routes.draw do
+  resources :suppliers
+
   resources :store_configs
     root :to => "store_configs#index"
   # The priority is based upon order of creation:

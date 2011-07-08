@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708080805) do
+ActiveRecord::Schema.define(:version => 20110708082237) do
 
   create_table "store_configs", :force => true do |t|
     t.string   "company_name"
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(:version => 20110708080805) do
     t.string   "phone"
     t.string   "website"
     t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "suppliers", :force => true do |t|
+    t.string   "company_name"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "address"
+    t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
