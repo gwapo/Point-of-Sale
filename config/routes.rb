@@ -1,4 +1,6 @@
 Mypos::Application.routes.draw do
+  resources :customers
+
   resources :sales
 
   resources :items
