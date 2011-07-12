@@ -1,0 +1,57 @@
+#contentPage{
+	margin: 0 auto;
+
+}
+#contentMain{
+	margin: 0 auto;
+	position:relative;
+}
+	#contentLeft{
+		float:left;
+		width:250px;
+		position:relative;
+		}
+	#contentRight{
+		margin:0 0 0 250px;
+		position:relative;
+	}
+
+
+/************************ *************************
+	LEFT SIDE MENU
+**************************************************/
+#container{
+	position:relative;
+	min-height:400px;
+}
+#contentLeft ul#mymenu { /* remove bullets and list indents */
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	/*background-color:red;*/
+}
+
+#contentLeft ul#mymenu li{ /* remove bullets and list indents */
+	min-width:200px;
+}
+
+#contentLeft ul#mymenu a{ /* remove bullets and list indents */
+	min-width:200px;
+}
+/************************ *************************
+	SALES
+**************************************************/
+#mainLeftSales{
+	float:left;
+	width: 600px;
+	position:relative;
+
+
+}
+#mainRightSales{
+	position:relative;
+	margin: 0 0 0 600px;
+
+	width:200px;
+}
+
