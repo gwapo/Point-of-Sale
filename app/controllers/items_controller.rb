@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+      @suppliers = Supplier.all
     @item = Item.find(params[:id])
   end
 

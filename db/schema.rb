@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708092442) do
+ActiveRecord::Schema.define(:version => 20110712084028) do
 
   create_table "customers", :force => true do |t|
     t.string   "first_name"
@@ -41,11 +41,12 @@ ActiveRecord::Schema.define(:version => 20110708092442) do
     t.string   "category"
     t.integer  "supplier_id"
     t.text     "descriptions"
-    t.decimal  "cost_price",   :precision => 10, :scale => 0
-    t.decimal  "unit_cost",    :precision => 10, :scale => 0
+    t.decimal  "cost_price",    :precision => 10, :scale => 0
+    t.decimal  "unit_cost",     :precision => 10, :scale => 0
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "reorder_level"
   end
 
   create_table "sales", :force => true do |t|
