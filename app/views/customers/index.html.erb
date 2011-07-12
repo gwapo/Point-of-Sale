@@ -25,7 +25,7 @@
     <td><%= customer.street_address %></td>
     <td><%= customer.city %></td>
     <td><%= customer.state %></td>
-    <td><%= customer.country %></td>
+    <td><%= I18n.t customer.country, :scope => 'countries' %></td>
     <td><%= customer.comments %></td>
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
@@ -37,3 +37,4 @@
 <br />
 
 <%= link_to 'New Customer', new_customer_path %>
+
