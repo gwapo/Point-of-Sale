@@ -4,3 +4,17 @@ class Inventory < ActiveRecord::Base
 
 end
 
+
+# == Schema Information
+#
+# Table name: inventories
+#
+#  id          :integer(4)      not null, primary key
+#  item_id     :integer(4)
+#  employee_id :integer(4)
+#  comment     :string(255)
+#  quantity    :integer(4)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
