@@ -10,6 +10,32 @@
       </ul>
     </div>
   <% end %>
+<div id="mainLeftSales">
+
+<table>
+  <tr>
+
+    <th><%= f.label :item_id, "Item Id" %></th>
+    <th><%= f.label :quantity_purchased, "Quantity" %></th>
+    <th><%= f.label :item_unit_price, "Unit Price" %></th>
+    <th><%= f.label :discount_percent, "Percent Discount " %></th>
+  </tr>
+
+  <%= f.fields_for :sale_items do |builder| %>
+    <%= render "sale_item_fields", :f => builder %>
+  <% end %>
+<tr id="AddItem">
+    <td colspan='4'><%= link_to_add_fields "Add Item", f, :sale_items %></td>
+  </tr>
+</table>
+
+
+
+
+
+
+</div>
+<div id="mainRightSales">
 
   <div class="field">
     <%= f.label :customer_id %><br />
@@ -18,12 +44,9 @@
 
   <div class="field">
     <%= f.label :comments %><br />
-    <%= f.text_area :comments %>
+    <%= f.text_area :comments, :rows => 3 %>
   </div>
-  <div class="field">
-    <%= f.label :sale_detail_id %><br />
-    <%= f.text_field :sale_detail_id %>
-  </div>
+
   <div class="field">
     <%= f.label :payment_type %><br />
     <%= f.text_field :payment_type %>
@@ -36,4 +59,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>
 

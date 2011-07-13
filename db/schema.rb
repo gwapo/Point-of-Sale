@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712144900) do
+ActiveRecord::Schema.define(:version => 20110712145921) do
 
   create_table "customers", :force => true do |t|
     t.string   "first_name"
@@ -35,32 +35,6 @@ ActiveRecord::Schema.define(:version => 20110712144900) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "inventories", :force => true do |t|
-    t.integer  "employee_id"
-    t.integer  "item_id"
-    t.text     "comment"
-    t.integer  "quantity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "inventories", ["employee_id"], :name => "index_inventories_on_employee_id"
-  add_index "inventories", ["item_id"], :name => "index_inventories_on_item_id"
-
-  create_table "item_sales", :force => true do |t|
-    t.integer  "sale_id"
-    t.integer  "item_id"
-    t.integer  "quantity_purchased"
-    t.decimal  "item_cost_price",    :precision => 10, :scale => 0
-    t.decimal  "item_unit_price",    :precision => 10, :scale => 0
-    t.integer  "discount_percent"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "item_sales", ["item_id"], :name => "index_item_sales_on_item_id"
-  add_index "item_sales", ["sale_id"], :name => "index_item_sales_on_sale_id"
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -93,9 +67,8 @@ ActiveRecord::Schema.define(:version => 20110712144900) do
     t.integer  "customer_id"
     t.integer  "employee_id"
     t.text     "comments"
-    t.integer  "sale_detail_id"
     t.string   "payment_type"
-    t.decimal  "amount",         :precision => 10, :scale => 0
+    t.decimal  "amount",       :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

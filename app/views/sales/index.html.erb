@@ -5,7 +5,7 @@
     <th>Customer</th>
     <th>Employee</th>
     <th>Comments</th>
-    <th>Sale detail</th>
+
     <th>Payment type</th>
     <th>Amount</th>
     <th></th>
@@ -18,7 +18,7 @@
     <td><%= sale.customer_id %></td>
     <td><%= sale.employee_id %></td>
     <td><%= sale.comments %></td>
-    <td><%= sale.sale_detail_id %></td>
+
     <td><%= sale.payment_type %></td>
     <td><%= sale.amount %></td>
     <td><%= link_to 'Show', sale %></td>
@@ -28,6 +28,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Sale', new_sale_path %>

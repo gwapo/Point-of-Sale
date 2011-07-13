@@ -26,6 +26,8 @@ class SalesController < ApplicationController
   def new
     @sale = Sale.new
 
+
+        @sale.sale_items.build
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sale }
@@ -44,7 +46,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to(@sale, :notice => 'Sale was successfully created.') }
+        format.html { redirect_to(sales_url) }
         format.xml  { render :xml => @sale, :status => :created, :location => @sale }
       else
         format.html { render :action => "new" }
@@ -81,3 +83,4 @@ class SalesController < ApplicationController
     end
   end
 end
+
