@@ -9,10 +9,13 @@ class Sale < ActiveRecord::Base
     after_save :add_item_id_to_inventory
 
     def add_item_id_to_inventory
-        sales_items = sale.sale_items
-        inventory = sales_items.inventories
-        invetory.quantity = 10
-        inventory.save
+      #sales_items = self.sales_items
+      sale_items.each do |sale_item|
+             Inventory.create(
+              :quantity => sale_item.quantity_purchased,
+              :item_id => sale_item.item_id
+             )
+        end
     end
 
 end
