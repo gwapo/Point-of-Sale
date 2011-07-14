@@ -10,7 +10,7 @@ Mypos::Application.routes.draw do
    #   get :autocomplete_items_name, :on => :collection
   #end
   resources :customers
-     #get 'sales/autocomplete_item_name'
+     get 'sales/autocomplete_item_name'
 
   resources :sales do
       #get :autocomplete_items_name, :on => :collection
