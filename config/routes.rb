@@ -5,7 +5,13 @@ Mypos::Application.routes.draw do
 
   resources :inventories
 
-  resources :sale_items
+  resources :sale_items do
+
+     #collection do
+     #   get :autocomplete_item_name
+
+    #end
+  end
   # do
    #   get :autocomplete_items_name, :on => :collection
   #end

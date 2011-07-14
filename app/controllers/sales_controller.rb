@@ -1,8 +1,8 @@
 class SalesController < ApplicationController
   # GET /sales
   # GET /sales.xml
-  autocomplete :item, :name , :full => true
 
+autocomplete :item, :name
 
   def index
     @sales = Sale.all

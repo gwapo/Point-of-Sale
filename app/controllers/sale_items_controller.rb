@@ -1,6 +1,8 @@
 class SaleItemsController < ApplicationController
   # GET /sale_items
   # GET /sale_items.xml
+
+
   def index
     @sale_items = SaleItem.all
 
@@ -81,3 +83,4 @@ class SaleItemsController < ApplicationController
     end
   end
 end
+

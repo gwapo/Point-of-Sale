@@ -1,13 +1,13 @@
   <tr>
     <td>
-    <%#= f.text_field :item_name, :size => 10 %>
-    <%= f.autocomplete_field :item_id, sales_autocomplete_item_name_path, :id_element => 'id',
 
-:size => 10 %></td>
+<%= autocomplete_field_tag :item_name, "", sales_autocomplete_item_name_path, :update_elements => {:id => '#item_id'}, :size => 10 %>
 
 
+</td>
     <td><%= f.text_field :quantity_purchased, :size => 10 %></td>
     <td><%= f.text_field :item_unit_price, :size => 10 %></td>
-    <td><%= f.text_field :discount_percent, :size => 10 %></td>
-  </t r>
+    <td><%= f.text_field :discount_percent, :size => 10 %><%= f.hidden_field :item_id, :id => "item_id", :size => '5' %>
+</td>
+  </tr>
 
