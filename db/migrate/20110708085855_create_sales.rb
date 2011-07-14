@@ -6,7 +6,7 @@ class CreateSales < ActiveRecord::Migration
       t.text :comments
       t.integer :sale_detail_id
       t.string :payment_type
-      t.decimal :amount, :scale => 2
+      t.decimal :amount
 
       t.timestamps
     end

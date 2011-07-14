@@ -1,4 +1,4 @@
-<%= form_for(@sale) do |f| %>
+<%= form_for(@sale, :url => sale_return_create_sales_path) do |f| %>
   <% if @sale.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
@@ -36,10 +36,11 @@
     <%= f.label :customer_id %><br />
     <%= f.text_field :customer_id %>
   </div>
-    <div class="field">
+     <div class="field">
     <%= f.label :sales_type %><br />
-    <%= f.hidden_field :sales_type, :value => 1 %>
+    <%= f.hidden_field :sales_type, :value => 0 %>
   </div>
+
   <div class="field">
     <%= f.label :comments %><br />
     <%= f.text_area :comments, :rows => 3 %>

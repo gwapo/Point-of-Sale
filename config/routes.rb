@@ -1,11 +1,26 @@
 Mypos::Application.routes.draw do
+  get "reports/index"
+
+  get "sales/index"
+
   resources :inventories
 
   resources :sale_items
-
+  # do
+   #   get :autocomplete_items_name, :on => :collection
+  #end
   resources :customers
+     #get 'sales/autocomplete_item_name'
 
-  resources :sales
+  resources :sales do
+      #get :autocomplete_items_name, :on => :collection
+    collection do
+        get :sale_return
+        post :sale_return_create
+    end
+
+  end
+
 
   resources :items
 

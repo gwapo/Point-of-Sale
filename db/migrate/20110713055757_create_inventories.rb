@@ -4,7 +4,7 @@ class CreateInventories < ActiveRecord::Migration
       t.integer :item_id
       t.integer :employee_id
       t.string :comment
-      t.integer :quantity
+      t.string :quantity
 
       t.timestamps
     end

@@ -1,6 +1,9 @@
 class SalesController < ApplicationController
   # GET /sales
   # GET /sales.xml
+  #autocomplete :item, :name , :full => true
+
+
   def index
     @sales = Sale.all
 
@@ -80,6 +83,36 @@ class SalesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(sales_url) }
       format.xml  { head :ok }
+    end
+  end
+
+
+  # GET /sales/new
+  # GET /sales/new.xml
+  def sale_return
+    @sale = Sale.new
+
+
+        @sale.sale_items.build
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @sale }
+    end
+  end
+
+    # POST /sales
+  # POST /sales.xml
+  def sale_return_create
+    @sale = Sale.new(params[:sale])
+
+    respond_to do |format|
+      if @sale.save
+        format.html { redirect_to(sales_url) }
+        format.xml  { render :xml => @sale, :status => :created, :location => @sale }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @sale.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end

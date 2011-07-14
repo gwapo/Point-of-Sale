@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
     has_many :sales
 
+    validates :country, :presence => true
 end
 
 

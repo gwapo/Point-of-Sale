@@ -1,21 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Customer:</b>
-  <%= @sale.customer_id %>
+  <b>Customer:   <%= fullname(@sale.customer) unless @sale.customer.blank? %>
 </p>
 
 <p>
-  <b>Employee:</b>
-  <%= @sale.employee_id %>
+  <b>Employee: <%= fullname(@sale.employee) unless @sale.employee.blank? %>
 </p>
 
 <p>
   <b>Comments:</b>
   <%= @sale.comments %>
 </p>
-
-
 
 <p>
   <b>Payment type:</b>
@@ -27,7 +23,22 @@
   <%= @sale.amount %>
 </p>
 
+<table>
+  <tr>
+    <th>Item Name</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
 
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Back', sales_path %>
+    <th>Discount</th>
+ </tr>
+
+<% @sale.sale_items.each do |item| %>
+  <tr>
+    <td><%= item.item_id %></td>
+    <td><%= item.quantity_purchased %></td>
+    <td><%= item.item_unit_price %></td>
+    <td><%= item.discount_percent %></td>
+  </tr>
+<% end %>
+</table>
 

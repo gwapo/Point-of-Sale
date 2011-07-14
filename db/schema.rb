@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110713055757) do
+ActiveRecord::Schema.define(:version => 20110713144414) do
 
   create_table "customers", :force => true do |t|
     t.string   "first_name"
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(:version => 20110713055757) do
     t.integer  "item_id"
     t.integer  "employee_id"
     t.string   "comment"
-    t.integer  "quantity"
+    t.string   "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "amount",      :precision => 10, :scale => 0, :default => 0
   end
 
   add_index "inventories", ["employee_id"], :name => "index_inventories_on_employee_id"
@@ -64,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20110713055757) do
   create_table "sale_items", :force => true do |t|
     t.integer  "sale_id"
     t.integer  "item_id"
-    t.integer  "quantity_purchased"
+    t.string   "quantity_purchased"
     t.decimal  "item_cost_price",    :precision => 10, :scale => 0
     t.decimal  "item_unit_price",    :precision => 10, :scale => 0
     t.integer  "discount_percent"
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20110713055757) do
     t.decimal  "amount",       :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sales_type",                                  :default => false
   end
 
   create_table "store_configs", :force => true do |t|

@@ -1,5 +1,20 @@
 class Item < ActiveRecord::Base
-    has_many :inventories
+    #has_many :inventories
+    has_many :sales
+    has_many :sale_items
+
+    after_create :add_item_id_to_inventory
+
+    def add_item_id_to_inventory
+             Inventory.create(
+              :quantity => self.quantity,
+              :item_id => self.id,
+              :employee_id => 1,
+              :comment => 'Add Item',
+              :amount => self.cost_price
+             )
+     end
+
 
 end
 

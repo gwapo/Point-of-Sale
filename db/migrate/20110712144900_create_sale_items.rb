@@ -3,7 +3,7 @@ class CreateSaleItems < ActiveRecord::Migration
     create_table :sale_items do |t|
       t.integer :sale_id
       t.integer :item_id
-      t.integer :quantity_purchased
+      t.decimal :quantity_purchased
       t.decimal :item_cost_price
       t.decimal :item_unit_price
       t.integer :discount_percent
