@@ -1,0 +1,17 @@
+  <div id="sales_label">
+    <ul>
+      <li><%= f.label :item_id, "Item Name" %></li>
+      <li><%= f.label :item_unit_price, "Unit Price" %></li>
+      <li><%= f.label :quantity_purchased, "Quantity" %></li>
+      <li><%= f.label :discount_percent, "Percent Discount " %></li>
+      <li><%= f.label :amount, "Amount" %></li>
+    </ul>
+    <div class="clearfloat"></div>
+  </div>
+  <div id="append">
+  <%= f.fields_for :sale_items do |builder| %>
+    <%= render "sale_item_fields", :f => builder %>
+  <% end %>
+  </div>
+  <%= link_to "Add Item", "#", :id => 'add_item' %>
+

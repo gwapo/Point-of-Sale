@@ -1,0 +1,6 @@
+<% data = [] %>
+<%= @items.each do |p| %>
+<% data << {:id => p.id, :label => p.name } %>
+<% end %>
+<% data.to_json %>
+

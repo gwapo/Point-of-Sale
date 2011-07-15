@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
+
   def index
     @items = Item.all
 
@@ -81,5 +82,21 @@ class ItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  #GET /items/itemlist/1.js
+  def itemlist
+      if params[:term]
+        @items = Item.all(:conditions => ["name like ?", params[:term] + '%'])
+      else
+        @items = Item.all
+      end
+
+        @items_hash = []
+        @items.each do |item|
+        @items_hash << { :id => item.id, :label => item.name, :unit_cost => item.unit_cost }
+        end
+    render :json => @items_hash
+  end
+
 end
 

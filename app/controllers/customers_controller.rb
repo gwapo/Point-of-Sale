@@ -80,4 +80,22 @@ class CustomersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  #GET /customer/searchcustomer/1.js
+  def searchcustomer
+      if params[:term]
+        @customers = Customer.all(:conditions => [" first_name like ?", params[:term] + '%'])
+      else
+        @customers = Item.all
+      end
+
+        @customers_hash = []
+        @customers.each do |customer|
+        @customers_hash << { :id => customer.id, :label => customer.first_name + ' ' + customer.last_name }
+        end
+    render :json => @customers_hash
+  end
+
 end
+

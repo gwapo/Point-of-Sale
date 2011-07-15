@@ -2,18 +2,8 @@ class SaleItem < ActiveRecord::Base
     belongs_to :sale
     belongs_to :item
 
-=begin
-    def item_name
-        item.name
-    end
-
-    def item_name=(name)
-        self.item = Item.find_by_name(name) unless item.name.blank?
-    end
-=end
-
+     validates :item_id, :presence => true
 end
-
 
 # == Schema Information
 #
