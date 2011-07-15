@@ -1,14 +1,14 @@
 <%= form_for(@sale) do |f| %>
-    <%= render 'errors' %>
-<div id="mainLeftSales">
-    <%= render 'item_label', :f => f %>
-</div>
-
-<div id="mainRightSales">
-  <div class="field">
-    <%= f.hidden_field :sales_type, :value => 1 %>
+  <%= render 'errors' %>
+  <div id="mainLeftSales">
+      <%= render 'item_label', :f => f %>
   </div>
-  <%= render 'subform' , :f => f%>
-</div>
+
+  <div id="mainRightSales">
+    <div class="field">
+      <%= f.hidden_field :sales_type, :value => 1 %>
+    </div>
+    <%= render 'subform' , :f => f%>
+  </div>
 <% end %>
 

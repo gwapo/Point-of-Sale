@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110713144414) do
+ActiveRecord::Schema.define(:version => 20110715080135) do
 
   create_table "customers", :force => true do |t|
     t.string   "first_name"
@@ -60,6 +60,27 @@ ActiveRecord::Schema.define(:version => 20110713144414) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "reorder_level"
+  end
+
+  create_table "receiving_items", :force => true do |t|
+    t.integer  "receiving_id"
+    t.integer  "item_id"
+    t.text     "description"
+    t.integer  "quantity"
+    t.decimal  "cost_price",   :precision => 10, :scale => 0
+    t.decimal  "unit_price",   :precision => 10, :scale => 0
+    t.integer  "discount",                                    :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "receivings", :force => true do |t|
+    t.integer  "employee_id"
+    t.integer  "supplier_id"
+    t.text     "comment"
+    t.boolean  "receive_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sale_items", :force => true do |t|

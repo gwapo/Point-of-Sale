@@ -8,6 +8,7 @@ class Sale < ActiveRecord::Base
 
     after_create :add_item_id_to_inventory
 
+private
 
     def add_item_id_to_inventory
       sale_items.each do |sale_item|

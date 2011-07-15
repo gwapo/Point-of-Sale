@@ -1,4 +1,8 @@
 Mypos::Application.routes.draw do
+  resources :receiving_items
+
+  resources :receivings
+
   get "reports/index"
   get "sales/index"
 

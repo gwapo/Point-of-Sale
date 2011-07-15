@@ -28,9 +28,8 @@ autocomplete :item, :name
   # GET /sales/new.xml
   def new
     @sale = Sale.new
+    @sale.sale_items.build
 
-
-        @sale.sale_items.build
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sale }

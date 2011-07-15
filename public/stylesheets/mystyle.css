@@ -8,11 +8,11 @@
 }
 	#contentLeft{
 		float:left;
-		width:250px;
+		width:200px;
 		position:relative;
 		}
 	#contentRight{
-		margin:0 0 0 250px;
+		margin:0 0 0 200px;
 		position:relative;
 	}
 
@@ -71,4 +71,24 @@ ul{
 		width:115px;
 		text-align:center;
 	}
+/************************ *************************
+	RECEIVING
+**************************************************/
+#mainLeftReceiving{
+	float:left;
+	width: 700px;
+	position:relative;
+
+}
+#mainRightReceiving{
+	position:relative;
+	margin: 0 0 0 700px;
+	width:150px;
+}
+#receiving_label li{
+	display:block;
+	float:left;
+	width:115px;
+	text-align:center;
+}
 
