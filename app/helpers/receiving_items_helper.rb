@@ -1,0 +1,2 @@
+module ReceivingItemsHelper
+end

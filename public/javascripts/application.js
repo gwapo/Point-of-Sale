@@ -134,5 +134,75 @@ $(function(){
    //eof of cloning
 
    // eof sale --------------------------------------------------------
+
+	//bof receiving
+	$('#receive0').children().val('');
+   $("#receive_add_item").click(function(){
+
+     var rlength  = $('#receive_append div').length;
+     var r  = new Number(rlength + 1);
+
+
+     var receive = $('#receive' + rlength ).clone().attr('id','receive' + r );
+	 var r_attributes = 'receiving_receiving_items_attributes_';
+	 var r_name = 'receiving[receiving_items_attributes][';
+
+	 var r_item_name = receive.children('.r_item_name0_').attr('id', 'r_item_name' + rlength + '_').attr('name','r_item_name' + rlength + '_')
+	 var r_item_id = receive.children('.r_item_id').attr('id', r_attributes + rlength + '_item_id').attr('name', r_name + rlength +'][item_id]');
+	 var r_cost_price = receive.children('.r_cost_price').attr('id', r_attributes + rlength + '_cost_price').attr('name', r_name + rlength +'][cost_price]');
+	 var r_unit_price = receive.children('.r_unit_price').attr('id', r_attributes + rlength + '_unit_price').attr('name', r_name + rlength +'][unit_price]');
+	 var r_quantity = receive.children('.r_quantity').attr('id', r_attributes + rlength + '_quantity').attr('name', r_name + rlength +'][quantity]');
+	var r_discount = receive.children('.r_discount').attr('id', r_attributes + rlength + '_discount').attr('name', r_name + rlength +'][discount]');
+	var r_amount = receive.children('.r_amount0_').attr('id', 'r_amount' + rlength + '_' );
+
+		//autocomplete
+		r_item_name.focus(function(){
+			create_autocomplete2(rlength);
+		});
+
+	//set all clone fields to blank
+	receive.children().val('');
+
+   //clone receiving
+    $("#receive_append").append(receive);
+	 return false;
+   });
+
+
+
+		create_autocomplete2(0);
+		//create_autocomplete(0);
+		function create_autocomplete2(b){
+
+		 $( "#r_item_name" + b + "_" ).autocomplete({
+				source: function(request, response) {
+					$.ajax({
+						url: "/items/itemlist.js",
+						dataType: "json",
+						data: {term: request.term},
+						success: function( data ) {
+						    response( data );
+						}
+				});
+				},
+				minLength: 2,
+			  	focus: function( event, ui ) {
+						$( "#r_item_name" + b + "_").val( ui.item.label );
+						return false;
+					},
+
+					select: function( event, ui ) {
+						$( "#r_item_name" + b + "_" ).val( ui.item.label );
+						$( "#receiving_receiving_items_attributes_" + b + "_item_id" ).val( ui.item.id );
+						$( "#receiving_receiving_items_attributes_" + b + "_unit_price" ).val( ui.item.unit_cost );
+						return false;
+					}
+
+		});
+		}
+   		//eof autocomplete for first column
+
+	//eof receiving
+
  });
 

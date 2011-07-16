@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Receiving:</b>
+  <%= @receiving_item.receiving_id %>
+</p>
+
+<p>
+  <b>Item:</b>
+  <%= @receiving_item.item_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @receiving_item.description %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @receiving_item.quantity %>
+</p>
+
+<p>
+  <b>Cost price:</b>
+  <%= @receiving_item.cost_price %>
+</p>
+
+<p>
+  <b>Unit price:</b>
+  <%= @receiving_item.unit_price %>
+</p>
+
+<p>
+  <b>Discount:</b>
+  <%= @receiving_item.discount %>
+</p>
+
+
+<%= link_to 'Edit', edit_receiving_item_path(@receiving_item) %> |
+<%= link_to 'Back', receiving_items_path %>

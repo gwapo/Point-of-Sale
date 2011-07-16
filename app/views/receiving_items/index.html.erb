@@ -1,0 +1,35 @@
+<h1>Listing receiving_items</h1>
+
+<table>
+  <tr>
+    <th>Receiving</th>
+    <th>Item</th>
+    <th>Description</th>
+    <th>Quantity</th>
+    <th>Cost price</th>
+    <th>Unit price</th>
+    <th>Discount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @receiving_items.each do |receiving_item| %>
+  <tr>
+    <td><%= receiving_item.receiving_id %></td>
+    <td><%= receiving_item.item_id %></td>
+    <td><%= receiving_item.description %></td>
+    <td><%= receiving_item.quantity %></td>
+    <td><%= receiving_item.cost_price %></td>
+    <td><%= receiving_item.unit_price %></td>
+    <td><%= receiving_item.discount %></td>
+    <td><%= link_to 'Show', receiving_item %></td>
+    <td><%= link_to 'Edit', edit_receiving_item_path(receiving_item) %></td>
+    <td><%= link_to 'Destroy', receiving_item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Receiving item', new_receiving_item_path %>

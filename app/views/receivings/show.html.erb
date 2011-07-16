@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Employee:</b>
+  <%= @receiving.employee_id %>
+</p>
+
+<p>
+  <b>Supplier:</b>
+  <%= @receiving.supplier_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @receiving.comment %>
+</p>
+
+<p>
+  <b>Receive type:</b>
+  <%= @receiving.receive_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_receiving_path(@receiving) %> |
+<%= link_to 'Back', receivings_path %>

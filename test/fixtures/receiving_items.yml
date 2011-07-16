@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  receiving_id: 1
+  item_id: 1
+  description: MyText
+  quantity: 1
+  cost_price: 9.99
+  unit_price: 9.99
+  discount: 1
+
+two:
+  receiving_id: 1
+  item_id: 1
+  description: MyText
+  quantity: 1
+  cost_price: 9.99
+  unit_price: 9.99
+  discount: 1

@@ -1,0 +1,29 @@
+<div id="mainLeftReceiving">
+  <div id="receiving_label">
+    <ul>
+      <li><%= f.label :item_id, "Item Name" %></li>
+      <li><%= f.label :unit_cost, "Cost Price" %></li>
+      <li><%= f.label :unit_price, "Unit Price" %></li>
+      <li><%= f.label :quantity, "Quantity" %></li>
+      <li><%= f.label :discount, "Percent Discount " %></li>
+      <li><%= f.label :amount, "Amount" %></li>
+    </ul>
+    <div class="clearfloat"></div>
+  </div>
+
+  <div id="receive_append">
+    <%= f.fields_for :receiving_items do |f| %>
+       <div id="receive1">
+          <%= text_field_tag 'r_item_name','', :size => 10, :class => "r_item_name0_",:id => "r_item_name0_"  %>
+          <%= f.hidden_field :item_id, :size => 5, :class => "r_item_id" %>
+          <%= f.text_field :cost_price, :size => 10, :class => "r_cost_price" %>
+          <%= f.text_field :unit_price, :size => 10, :class => "r_unit_price" %>
+          <%= f.text_field :quantity, :size => 10, :class => "r_quantity" %>
+          <%= f.text_field :discount, :size => 10, :class => "r_discount" %>
+          <%#= text_field_tag :amount, "", :size => 10, :class => "r_amount0_" %>
+        </div>
+    <% end %>
+  </div>
+  <%= link_to "Add Item", "#", :id => 'receive_add_item' %>
+</div>
+

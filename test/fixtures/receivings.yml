@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  employee_id: 1
+  supplier_id: 1
+  comment: 
+  receive_type: false
+
+two:
+  employee_id: 1
+  supplier_id: 1
+  comment: 
+  receive_type: false

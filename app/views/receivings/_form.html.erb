@@ -1,0 +1,6 @@
+<%= form_for(@receiving) do |f| %>
+  <%= render 'errors' %>
+  <%= render 'receiving_items' , :f => f%>
+  <%= render 'receiving_fields' , :f => f%>
+<% end %>
+
