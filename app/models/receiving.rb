@@ -2,6 +2,7 @@ class Receiving < ActiveRecord::Base
     has_many :receiving_items, :dependent => :destroy
     accepts_nested_attributes_for :receiving_items
 
+
     after_create :add_item_id_to_inventory
 
 private
@@ -29,4 +30,18 @@ private
     end
 
 end
+
+
+# == Schema Information
+#
+# Table name: receivings
+#
+#  id           :integer(4)      not null, primary key
+#  employee_id  :integer(4)
+#  supplier_id  :integer(4)
+#  comment      :text
+#  receive_type :boolean(1)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
 

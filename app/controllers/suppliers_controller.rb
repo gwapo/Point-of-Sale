@@ -81,5 +81,21 @@ class SuppliersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+ #GET /suppliers/searchcustomer/1.js
+  def searchsupplier
+      if params[:term]
+        @suppliers = Supplier.all(:conditions => [" company_name like ?", params[:term] + '%'])
+      else
+        @suppliers = Supplier.all
+      end
+
+        @suppliers_hash = []
+        @suppliers.each do |supplier|
+        @suppliers_hash << { :id => supplier.id, :label => supplier.company_name  }
+        end
+    render :json => @suppliers_hash
+  end
+
 end
 

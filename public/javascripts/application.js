@@ -2,6 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(function(){
+
    // bof sale --------------------------------------------------------
    		//bof autocomplete for first column
    		$("#salediv1").children().val('');
@@ -136,73 +137,140 @@ $(function(){
    // eof sale --------------------------------------------------------
 
 	//bof receiving
-	$('#receive0').children().val('');
-   $("#receive_add_item").click(function(){
+   $('#receive0').children().val('');
+   $("a#receive_add_item").click(function(){
 
-     var rlength  = $('#receive_append div').length;
+     var rlength  = parseInt($('#receive_append div:last').attr('id').substring(7));
      var r  = new Number(rlength + 1);
-
 
      var receive = $('#receive' + rlength ).clone().attr('id','receive' + r );
 	 var r_attributes = 'receiving_receiving_items_attributes_';
 	 var r_name = 'receiving[receiving_items_attributes][';
+
+	 var r_item_delete = receive.children('.receiving_deleteitem').attr('id','receiving_deleteitem' + rlength)
 
 	 var r_item_name = receive.children('.r_item_name0_').attr('id', 'r_item_name' + rlength + '_').attr('name','r_item_name' + rlength + '_')
 	 var r_item_id = receive.children('.r_item_id').attr('id', r_attributes + rlength + '_item_id').attr('name', r_name + rlength +'][item_id]');
 	 var r_cost_price = receive.children('.r_cost_price').attr('id', r_attributes + rlength + '_cost_price').attr('name', r_name + rlength +'][cost_price]');
 	 var r_unit_price = receive.children('.r_unit_price').attr('id', r_attributes + rlength + '_unit_price').attr('name', r_name + rlength +'][unit_price]');
 	 var r_quantity = receive.children('.r_quantity').attr('id', r_attributes + rlength + '_quantity').attr('name', r_name + rlength +'][quantity]');
-	var r_discount = receive.children('.r_discount').attr('id', r_attributes + rlength + '_discount').attr('name', r_name + rlength +'][discount]');
-	var r_amount = receive.children('.r_amount0_').attr('id', 'r_amount' + rlength + '_' );
+     var r_discount = receive.children('.r_discount').attr('id', r_attributes + rlength + '_discount').attr('name', r_name + rlength +'][discount]');
+	 var r_amount = receive.children('.r_amount0_').attr('id', 'r_amount' + rlength + '_' );
 
-		//autocomplete
-		r_item_name.focus(function(){
-			create_autocomplete2(rlength);
-		});
+	//autocomplete
+	r_item_name.focus(function(){
+		create_autocomplete2(rlength);
+	});
+
+
 
 	//set all clone fields to blank
 	receive.children().val('');
 
-   //clone receiving
+    //clone receiving
     $("#receive_append").append(receive);
-	 return false;
-   });
+
+	//delete row
+	/*
+	r_item_delete.click(function(e) {
+        e.preventDefault();
+ 		$(this).parent().remove();
+	});
+	**/
+
+	return false;
+    }); //close receiving cloning
 
 
 
-		create_autocomplete2(0);
-		//create_autocomplete(0);
-		function create_autocomplete2(b){
+	//autocomplete for first row on receiving items
+	create_autocomplete2(0);
 
-		 $( "#r_item_name" + b + "_" ).autocomplete({
+	function create_autocomplete2(b){
+
+		$( "#r_item_name" + b + "_" ).autocomplete({
 				source: function(request, response) {
 					$.ajax({
-						url: "/items/itemlist.js",
-						dataType: "json",
-						data: {term: request.term},
+					url: "/items/itemlist.js",
+					dataType: "json",
+					data: {term: request.term},
 						success: function( data ) {
-						    response( data );
+						   response( data );
 						}
-				});
+					});
 				},
 				minLength: 2,
-			  	focus: function( event, ui ) {
-						$( "#r_item_name" + b + "_").val( ui.item.label );
+				focus: function( event, ui ) {
+					$( "#r_item_name" + b + "_").val( ui.item.label );
 						return false;
-					},
+				},
 
-					select: function( event, ui ) {
-						$( "#r_item_name" + b + "_" ).val( ui.item.label );
-						$( "#receiving_receiving_items_attributes_" + b + "_item_id" ).val( ui.item.id );
-						$( "#receiving_receiving_items_attributes_" + b + "_unit_price" ).val( ui.item.unit_cost );
-						return false;
-					}
+				select: function( event, ui ) {
+					$( "#r_item_name" + b + "_" ).val( ui.item.label );
+					$( "#receiving_receiving_items_attributes_" + b + "_item_id" ).val( ui.item.id );
+					$( "#receiving_receiving_items_attributes_" + b + "_unit_price" ).val( ui.item.unit_cost );
+					$( "#receiving_receiving_items_attributes_" + b + "_quantity" ).val(1);
+					$( "#r_amount" + b + "_" ).val( ui.item.unit_cost );
+					return false;
+				}
 
-		});
+			});
+	}//close autocomplete function 2
+
+	//bof autocomplete for suppliers
+	$( "#receiving_deletecustomer" ).hide();
+	$( "#receiving_supplier_id" ).hide();
+	$( "#supplier_name" ).autocomplete({
+		source: function(request, response) {
+			$.ajax({
+				url: "/suppliers/searchsupplier.js",
+				dataType: "json",
+				data: {term: request.term},
+				success: function( data ) {
+				   response( data );
+				}
+			});
+		},
+		focus: function( event, ui ) {
+			$( this).val( ui.item.label );
+				return false;
+		},
+		minLength: 2,
+	  	select: function( event, ui ) {
+			$( "#receiving_supplier_fullname" ).html( ui.item.label );
+			$( "#receiving_supplier_id" ).val( ui.item.id );
+			$( "#receiving_deletecustomer" ).show();
+			$( this ).hide();
+			return false;
 		}
-   		//eof autocomplete for first column
 
-	//eof receiving
+	});
+	//eof autocomplete for suppliers
+
+	//bof link to delete supplier
+	$("#receiving_deletecustomer").click(function(){
+		$("#receiving_supplier_id" ).val('');
+		$("#receiving_supplier_fullname").hide();
+		$("#supplier_name" ).show().val('');
+		$(this).hide();
+		return false;
+	});
+	//eof link to delete supplier
+
 
  });
+
+ function getthefieldid(b){
+ 	var c = b.substring(37);
+ 	var currentid = c.slice(0,c.indexOf("_"));
+ 	var returndata = b.substring(0,39);
+	var return_unit_price = "#"+ returndata + "unit_price";
+	var return_quantity = "#"+ returndata + "quantity";
+	var return_unit_price = "#"+ returndata + "unit_price";
+	var a = parseFloat($(return_unit_price).val());
+	var b = $(return_quantity).val();
+	var total = (a*b);
+	$("#r_amount"+ currentid + "_").val(total);
+
+ }
 

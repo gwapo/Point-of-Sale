@@ -88,7 +88,28 @@ ul{
 #receiving_label li{
 	display:block;
 	float:left;
-	width:115px;
 	text-align:center;
 }
+	.r_quantity, .r_unit_price, .r_unit_cost, .r_discount{
+		width:70px;
+	}
+	 .shortlabel{
+		width:80px;
+		display:block;
+	 }
+	.longlabel{
+		width:115px;
+		display:block;
+	 }
+	.receiving_deleteitem{
+		width:80px;
+		display:block; clear:left; float:left;line-height: 23px;
+		text-align:center;
+	}
+	a.receiving_deleteitem:hover{
+		background-color:white;
+		color:black;
+	}
+	.r_amount0_{
+	}
 

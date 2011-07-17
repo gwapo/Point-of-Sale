@@ -7,6 +7,7 @@ class InventoryTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: inventories
@@ -15,8 +16,9 @@ end
 #  item_id     :integer(4)
 #  employee_id :integer(4)
 #  comment     :string(255)
-#  quantity    :integer(4)
+#  quantity    :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  amount      :integer(10)     default(0)
 #
 

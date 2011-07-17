@@ -1,8 +1,12 @@
 <div id="mainRightReceiving">
 
   <div class="field">
-    <%= f.label :supplier_id %><br />
+    <%= f.label :supplier_id, "Supplier Name" %><br />
+    <span id="receiving_supplier_fullname"></span>
     <%= f.text_field :supplier_id %>
+    <%= text_field_tag :supplier_name %><br />
+    <%= link_to "Delete Customer", "#", :id => "receiving_deletecustomer" %>
+
   </div>
   <div class="field">
     <%= f.label :comment %><br />

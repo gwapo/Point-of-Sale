@@ -36,6 +36,7 @@ private
 end
 
 
+
 # == Schema Information
 #
 # Table name: sales
@@ -48,5 +49,6 @@ end
 #  amount       :integer(10)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  sales_type   :boolean(1)      default(FALSE)
 #
 

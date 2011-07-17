@@ -16,6 +16,7 @@ two:
   payment_type: MyString
   amount: 9.99
 
+
 # == Schema Information
 #
 # Table name: sales
@@ -28,5 +29,6 @@ two:
 #  amount       :integer(10)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  sales_type   :boolean(1)      default(FALSE)
 #
 

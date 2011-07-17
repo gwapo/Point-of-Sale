@@ -27,7 +27,11 @@ Mypos::Application.routes.draw do
   end
 
   resources :employees
-  resources :suppliers
+  resources :suppliers  do
+    collection do
+       get 'searchsupplier'
+     end
+  end
 
   resources :store_configs
     root :to => "store_configs#index"

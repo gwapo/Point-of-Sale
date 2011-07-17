@@ -87,7 +87,7 @@ class CustomersController < ApplicationController
       if params[:term]
         @customers = Customer.all(:conditions => [" first_name like ?", params[:term] + '%'])
       else
-        @customers = Item.all
+        @customers = Customer.all
       end
 
         @customers_hash = []
