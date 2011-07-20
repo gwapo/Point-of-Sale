@@ -1,0 +1,24 @@
+<% unless @sales.blank? %>
+<table class = 'sales'>
+  <tr>
+    <th>Customer</th>
+    <th>Employee </th>
+    <th>Comment</th>
+    <th>Payment Type</th>
+    <th>Amount</th>
+
+  </tr>
+
+<% @sales.each do |sale| %>
+  <tr>
+    <td class='alignleft'><%= fullname(sale.customer) unless sale.customer_id.blank?  %> &nbsp;</td>
+    <td class='alignleft'><%= fullname(sale.employee) unless sale.employee_id.blank? %> &nbsp;</td>
+    <td class='alignright'><%= sale.comments %> &nbsp;</td>
+    <td class='alignright'><%= sale.payment_type %> &nbsp;</td>
+    <td class='alignright'><%= sale.amount %> &nbsp;</td>
+  </tr>
+<% end %>
+</table>
+
+<% end %>
+

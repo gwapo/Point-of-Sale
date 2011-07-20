@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
     #has_many :inventories
     has_many :sales
     has_many :sale_items
+    belongs_to :supplier
 
     after_create :add_item_id_to_inventory
 

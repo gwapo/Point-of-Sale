@@ -1,27 +1,21 @@
 <h1>Listing employees</h1>
 
-<table>
+<table class='sales'>
   <tr>
-    <th>First name</th>
-    <th>Middle name</th>
-    <th>Last name</th>
+    <th>Name </th>
     <th>Email</th>
     <th>Address</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @employees.each do |employee| %>
   <tr>
-    <td><%= employee.first_name %></td>
-    <td><%= employee.middle_name %></td>
-    <td><%= employee.last_name %></td>
+    <td><%= employee.first_name %> <%= employee.middle_name %> <%= employee.last_name %></td>
     <td><%= employee.email %></td>
     <td><%= employee.address %></td>
-    <td><%= link_to 'Show', employee %></td>
-    <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-    <td><%= link_to 'Destroy', employee, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', employee %>
+    <%= link_to 'Edit', edit_employee_path(employee) %>
+    <%= link_to 'Destroy', employee, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -29,3 +23,4 @@
 <br />
 
 <%= link_to 'New Employee', new_employee_path %>
+

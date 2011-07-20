@@ -3,15 +3,16 @@
 <head>
   <title>POS</title>
   <%= stylesheet_link_tag :all %>
-
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "jquery-ui-1.8.14.custom.min.js" %>
+
   <%= csrf_meta_tag %>
 </head>
 <body>
 <div id="contentPage">
     <div>
       <%= render 'layouts/header' %>
+      <br /> <br />
     </div>
     <div>
       <div id="contentLeft">
@@ -19,6 +20,7 @@
             <li> <%= link_to 'Sales', sales_path %> </li>
             <li> <%= link_to 'New Sale', new_sale_path %> </li>
             <li> <%= link_to 'Return Item', sale_return_sales_path %> </li>
+            <li> <%= link_to 'Orders', purchase_sales_path %> </li>
           </ul>
       </div>
       <div id="contentRight">

@@ -1,0 +1,52 @@
+<%= link_to 'Add ', new_account_path %> | <%= link_to 'Account Receivables List', list_accounts_path %>
+<div id="accountscontainer">
+  <div id="accounts">
+
+  </div>
+
+</div>
+
+<script>
+$(document).ready(function() {
+
+	  //bof fullcalendar on accounts
+    $('#accounts').fullCalendar({
+       // put your options and callbacks here
+      events: "/accounts/schedules.js",
+
+      header: {
+         left: 'prev',
+         center: 'title',
+         right: 'next'
+      },
+			buttonText: { prev: 'Previous Month', next: 'Next Month' },
+			loading: function(bool) {
+				if (bool) $('#loading').show();
+				else $('#loading').hide();
+			}
+
+    })//eof fullcalendar on accounts
+
+});
+</script>
+<style>
+#accountscontainer{
+  position:relative;
+  width:500px;
+  height:500px;
+}
+#accounts{
+    width:500px;
+  height:500px;
+
+}
+.fc-content{
+  position:absolute;
+  top: -150px;
+  left:0px;
+
+}
+
+
+</style>
+

@@ -1,15 +1,11 @@
-<h1>Listing sales</h1>
 
-<table>
+<table class='sales'>
   <tr>
     <th>Customer</th>
     <th>Employee</th>
     <th>Comments</th>
-
     <th>Payment type</th>
     <th>Amount</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -21,9 +17,9 @@
 
     <td><%= sale.payment_type %></td>
     <td><%= sale.amount %></td>
-    <td><%= link_to 'Show', sale %></td>
-    <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-    <td><%= link_to 'Destroy', sale, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Sales Invoice', sale %> | <%= link_to 'Sales Invoice(PDF)', sale %>
+    <%#= link_to 'Edit', edit_sale_path(sale) %>
+    <%#= link_to 'Destroy', sale, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

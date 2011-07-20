@@ -11,9 +11,14 @@ class CreateItems < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :items, :supplier_id
+
+
   end
 
   def self.down
     drop_table :items
   end
 end
+

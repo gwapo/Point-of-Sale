@@ -1,0 +1,9 @@
+      <%= label_tag 'Search By :' %>
+      <%= select_tag("search", options_for_select([['Select Type'],['Yearly'],['Monthly'],['Specific Date']]), :prompt => 'Select Type' ) %>
+      <%= select_year(Date.today, :start_year => Time.now.year , :end_year => 1980 ) %>
+      <%= select_month(Date.today) %>
+
+      <%= text_field_tag("start_date") %>
+      <%= text_field_tag("end_date") %>
+      <%= submit_tag("Search") %>
+

@@ -1,0 +1,52 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :supplier_id %><br />
+    <%= f.select :supplier_id, @suppliers.map { |s| [s.company_name, s.id] }, {:prompt => 'Select Supplier'},
+                              :selected => @item.supplier_id   %>
+
+  </div>
+  <div class="field">
+    <%= f.label :descriptions %><br />
+    <%= f.text_area :descriptions %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_price %><br />
+    <%= f.text_field :cost_price %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_cost %><br />
+    <%= f.text_field :unit_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity, :value => 0, :readonly => "readonly" %>
+  </div>
+   <div class="field">
+    <%= f.label :reorder_level %><br />
+    <%= f.text_field :reorder_level %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

@@ -2,10 +2,18 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.xml
 
-autocomplete :item, :name
-
   def index
-    @sales = Sale.all
+    @sales = Sale.all(:conditions => {:order => 1})
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @sales }
+    end
+  end
+
+ # /purchase
+  def purchase
+    @sales = Sale.all(:conditions => {:order => 0})
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +53,7 @@ autocomplete :item, :name
   # POST /sales.xml
   def create
     @sale = Sale.new(params[:sale])
+    @sale.employee_id = 1
 
     respond_to do |format|
       if @sale.save
@@ -114,5 +123,8 @@ autocomplete :item, :name
       end
     end
   end
+
+
+
 end
 

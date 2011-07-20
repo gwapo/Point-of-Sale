@@ -10,6 +10,16 @@
     <%= link_to "Cancel Sale", new_sale_path %>
   </div>
 
+  <div class="field">
+    <%
+      if @sale.new_record?
+        order = options_for_select({ "Buy" => 1, "Order" => 0 }, 1 )
+      else
+          order = options_for_select({ "Buy" => 1 } )
+      end
+      %>
+    <%= f.select :order, order   %>
+  </div>
 
   <div class="field">
     <%= f.label :comments %><br />

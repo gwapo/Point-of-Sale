@@ -1,0 +1,48 @@
+
+  <div class="sales_search">
+    <%= form_tag(reports_employeesales_path, :method => "get") do %>
+      Employee Name <%= text_field_tag "employee_name" %><br />
+      <%= hidden_field_tag "employee_id","", :value => 0 %>
+      <%= render 'sales_fields' %>
+    <% end %>
+  </div>
+<br />
+<%= render 'sales_table' %>
+
+
+<script>
+	$(function() {
+
+		$( "#start_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
+		$( "#end_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
+
+
+			//bof customers search
+		$( "div.sales_search  #employee_name" ).autocomplete({
+				source: function(request, response) {
+					$.ajax({
+						url: "/employees/searchemployee.js",
+						dataType: "json",
+						data: {term: request.term},
+						success: function( data ) {
+						    response( data );
+						}
+				});
+				},
+				focus: function( event, ui ) {
+					$( this).val( ui.item.label );
+					return false;
+				},
+				minLength: 2,
+			  	select: function( event, ui ) {
+						$( "div.sales_search  #employee_name" ).html( ui.item.label );
+						$( "div.sales_search  #employee_id" ).val( ui.item.id );
+						//$( this ).hide();
+						//$("#deletecustomer").show();
+						return false;
+					}
+
+		});
+	});
+	</script>
+

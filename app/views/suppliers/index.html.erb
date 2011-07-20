@@ -1,33 +1,27 @@
 <h1>Listing suppliers</h1>
 
-<table>
+<table class='sales'>
   <tr>
     <th>Company name</th>
-    <th>First name</th>
-    <th>Middle name</th>
-    <th>Last name</th>
+    <th>Name</th>
     <th>Email</th>
     <th>Phone number</th>
     <th>Address</th>
     <th>Comments</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @suppliers.each do |supplier| %>
   <tr>
     <td><%= supplier.company_name %></td>
-    <td><%= supplier.first_name %></td>
-    <td><%= supplier.middle_name %></td>
-    <td><%= supplier.last_name %></td>
+    <td><%= supplier.first_name %> <%= supplier.middle_name %> <%= supplier.last_name %></td>
     <td><%= supplier.email %></td>
     <td><%= supplier.phone_number %></td>
     <td><%= supplier.address %></td>
     <td><%= supplier.comments %></td>
-    <td><%= link_to 'Show', supplier %></td>
-    <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
-    <td><%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', supplier %>
+    <%= link_to 'Edit', edit_supplier_path(supplier) %>
+    <%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -35,3 +29,4 @@
 <br />
 
 <%= link_to 'New Supplier', new_supplier_path %>
+

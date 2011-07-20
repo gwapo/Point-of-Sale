@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Client Name:</b>
+  <%= @account.client_name %>
+</p>
+
+<p>
+  <b>Check Date:</b>
+  <%= @account.check_date %>
+</p>
+<p>
+  <b>Delivery Number:</b>
+  <%= @account.delivery_no %>
+</p>
+<p>
+  <b>Check Number:</b>
+  <%= @account.check_number %>
+</p>
+<p>
+  <b>Bank Name:</b>
+  <%= @account.bank_name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @account.amount %>
+</p>
+
+<p>
+  <b>Employee Name:</b>
+  <%= fullname(@account.employee) %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
+

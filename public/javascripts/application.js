@@ -3,9 +3,47 @@
 
 $(function(){
 
+
+   //all initalizer functions
+   var app = {
+		autocompletefor: function(){
+
+		  $( "#history_item_name" ).autocomplete({
+				source: function(request, response) {
+					$.ajax({
+						url: "/items/itemlist.js",
+						dataType: "json",
+						data: {term: request.term},
+						success: function( data ) {
+						    response( data );
+						}
+				});
+				},
+				minLength: 2,
+			  	focus: function( event, ui ) {
+						$( "#item_name" + a ).val( ui.item.label );
+						return false;
+					},
+
+					select: function( event, ui ) {
+						$( "#history_item_name").val( ui.item.label );
+						$( "#history_item_id").val( ui.item.id );
+					return false;
+					}
+
+				});
+		}
+
+   }; //close var app
+
+   //load functions
+   app.autocompletefor();
+
+
+
    // bof sale --------------------------------------------------------
    		//bof autocomplete for first column
-   		$("#salediv1").children().val('');
+
 		create_autocomplete(0);
 
 		function create_autocomplete(a){
@@ -32,7 +70,7 @@ $(function(){
 						$( "#sale_sale_items_attributes_" + a + "_item_unit_price").val( ui.item.unit_cost );
 						$( "#sale_sale_items_attributes_" + a + "_quantity_purchased").val( 1 );
 						$( "#sale_sale_items_attributes_" + a + "_quantity_purchased").val( 1 );
-						$( "#amount" + a ).val( ui.item.unit_cost );
+						$( "#amount" + a +"_" ).val( ui.item.unit_cost );
 						$(".cancelsale").show();
 						return false;
 					}
@@ -58,7 +96,7 @@ $(function(){
      var quantity_purchased = newDiv.children('.quantity_purchased').attr('id', sale_attributes + newNum + '_quantity_purchased').attr('name', name_attributes + newNum +'][quantity_purchased]');
      var item_unit_price = newDiv.children('.item_unit_price').attr('id', sale_attributes + newNum +'_item_unit_price').attr('name', name_attributes + newNum +'][item_unit_price]');
      var discount_percent = newDiv.children('.discount_percent').attr('id', sale_attributes + newNum +'_discount_percent').attr('name', name_attributes + newNum +'][discount_percent]');
-	var amount = newDiv.children('#amount0').attr('id', 'amount' + newNum)
+	var amount = newDiv.children('#amount0_').attr('id', 'amount' + newNum + "_")
 
 
 		//autocomplete
@@ -171,12 +209,11 @@ $(function(){
     $("#receive_append").append(receive);
 
 	//delete row
-	/*
 	r_item_delete.click(function(e) {
         e.preventDefault();
  		$(this).parent().remove();
 	});
-	**/
+
 
 	return false;
     }); //close receiving cloning
@@ -210,6 +247,7 @@ $(function(){
 					$( "#receiving_receiving_items_attributes_" + b + "_item_id" ).val( ui.item.id );
 					$( "#receiving_receiving_items_attributes_" + b + "_unit_price" ).val( ui.item.unit_cost );
 					$( "#receiving_receiving_items_attributes_" + b + "_quantity" ).val(1);
+					$( "#receiving_receiving_items_attributes_" + b + "_cost_price" ).val( ui.item.cost_price );
 					$( "#r_amount" + b + "_" ).val( ui.item.unit_cost );
 					return false;
 				}
@@ -266,11 +304,23 @@ $(function(){
  	var returndata = b.substring(0,39);
 	var return_unit_price = "#"+ returndata + "unit_price";
 	var return_quantity = "#"+ returndata + "quantity";
-	var return_unit_price = "#"+ returndata + "unit_price";
+
 	var a = parseFloat($(return_unit_price).val());
 	var b = $(return_quantity).val();
 	var total = (a*b);
 	$("#r_amount"+ currentid + "_").val(total);
 
+ }
+ function getthefieldid2(d){
+ 	var d = d.substring(27);
+ 	var currentid = d.slice(0,d.indexOf("_"));
+ 	var returndata = "sale_sale_items_attributes_" + currentid;
+ 	var return_quantity = $("#"+ returndata + "_quantity_purchased").val();
+ 	var return_price = $("#"+ returndata + "_item_unit_price").val();
+ 	var total = (return_quantity*return_price);
+	$("#amount"+ currentid + "_").val(total);
+
+ 	//sale_sale_items_attributes_0_quantity_purchased
+ 	alert(total);
  }
 

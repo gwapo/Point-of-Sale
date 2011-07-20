@@ -1,4 +1,7 @@
 class StoreConfigsController < ApplicationController
+     layout "twocolumn"
+    before_filter :getPageTitle
+
   # GET /store_configs
   # GET /store_configs.xml
   def index
@@ -80,4 +83,11 @@ class StoreConfigsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+private
+
+    def getPageTitle
+        @pagetitle = "Store Configuration"
+    end
 end
+

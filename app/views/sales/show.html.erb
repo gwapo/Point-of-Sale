@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Date Purchased:</b>
+  <%= @sale.created_at %>
+</p>
+<p>
   <b>Customer:   <%= fullname(@sale.customer) unless @sale.customer.blank? %>
 </p>
 
@@ -22,22 +26,24 @@
   <b>Amount:</b>
   <%= @sale.amount %>
 </p>
+<br />
 
-<table>
+<table class='sales'>
   <tr>
     <th>Item Name</th>
     <th>Quantity</th>
     <th>Unit Price</th>
-
     <th>Discount</th>
+    <th>Amount</th>
  </tr>
 
 <% @sale.sale_items.each do |item| %>
   <tr>
-    <td><%= item.item_id %></td>
+    <td><%= item.item.name %></td>
     <td><%= item.quantity_purchased %></td>
-    <td><%= item.item_unit_price %></td>
-    <td><%= item.discount_percent %></td>
+    <td class='alignright'><%= item.item_unit_price %></td>
+    <td class='alignright'><%= item.discount_percent %></td>
+    <td class='alignright'><%= amount_total(item.item_unit_price, item.quantity_purchased, 0) %></td>
   </tr>
 <% end %>
 </table>

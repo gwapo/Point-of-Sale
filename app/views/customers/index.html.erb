@@ -1,9 +1,8 @@
 <h1>Listing customers</h1>
 
-<table>
+<table class='sales'>
   <tr>
-    <th>First name</th>
-    <th>Last name</th>
+    <th>Name</th>
     <th>Phone number</th>
     <th>Email</th>
     <th>Street address</th>
@@ -12,14 +11,11 @@
     <th>Country</th>
     <th>Comments</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @customers.each do |customer| %>
   <tr>
-    <td><%= customer.first_name %></td>
-    <td><%= customer.last_name %></td>
+    <td><%= customer.first_name %> <%= customer.last_name %></td>
     <td><%= customer.phone_number %></td>
     <td><%= customer.email %></td>
     <td><%= customer.street_address %></td>
@@ -27,9 +23,9 @@
     <td><%= customer.state %></td>
     <td><%= I18n.t customer.country, :scope => 'countries' %></td>
     <td><%= customer.comments %></td>
-    <td><%= link_to 'Show', customer %></td>
-    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', customer %>
+      <%= link_to 'Edit', edit_customer_path(customer) %>
+    <%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

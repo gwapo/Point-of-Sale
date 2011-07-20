@@ -13,6 +13,8 @@ class CreateSaleItems < ActiveRecord::Migration
 
     add_index :sale_items, :sale_id
     add_index :sale_items, :item_id
+
+
   end
 
   def self.down

@@ -12,9 +12,14 @@ class CreateSuppliers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+
+
+
   end
 
   def self.down
     drop_table :suppliers
   end
 end
+

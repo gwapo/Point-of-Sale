@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @pagetitle %></h1>
 <p>
   <b>Company name:</b>
   <%= @store_config.company_name %>
@@ -33,3 +34,4 @@
 
 <%= link_to 'Edit', edit_store_config_path(@store_config) %> |
 <%= link_to 'Back', store_configs_path %>
+

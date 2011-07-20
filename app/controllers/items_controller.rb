@@ -83,7 +83,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  #GET /items/itemlist/1.js
+  #GET /items/itemlist.js
   def itemlist
       if params[:term]
         @items = Item.all(:conditions => ["name like ?", params[:term] + '%'])
@@ -93,9 +93,20 @@ class ItemsController < ApplicationController
 
         @items_hash = []
         @items.each do |item|
-        @items_hash << { :id => item.id, :label => item.name, :unit_cost => item.unit_cost }
+        @items_hash << { :id => item.id, :label => item.name, :unit_cost => item.unit_cost,  :cost_price => item.cost_price }
         end
     render :json => @items_hash
+  end
+
+  # GET /items/newitem
+  # GET /items/newitem.xml
+  def newitem
+    @item = Item.new
+    @suppliers = Supplier.all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @item }
+    end
   end
 
 end

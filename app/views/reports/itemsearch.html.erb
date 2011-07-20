@@ -1,0 +1,70 @@
+
+ <div class="item_search">
+    <% form_tag(reports_itemsearch_path, :method => "get") do %>
+      Product Name<%= text_field_tag "history_item_name" %><br />
+      Year <%= select_year(Date.today, :field_name => "history_year", :start_year => Time.now.year , :end_year => 1980 ) %> <br />
+      <%= submit_tag "Search" %>
+      <%= hidden_field_tag "history_item_id", :value => "" %>
+    <% end %>
+
+
+
+ </div>
+ <br />
+<% unless @items_inventories.blank? %>
+
+ <p> Product Name: <%= @item_name unless @item_name.blank? %><p>
+ <p> Number of Product  :  <%=  @items_inventories.map(&:quantity).map(&:to_i).reduce(:+) unless @items_inventories.blank?  %><p>
+ <p> Price average :  <%=  @items_inventories.map(&:amount).map(&:to_i).reduce(:+)/@items_inventories.count unless @items_inventories.blank?  %><p>
+
+<br />
+<br />
+
+<table class='sales'>
+  <tr>
+    <th>Employee</th>
+    <th>Comment</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+
+<% @items_inventories.each do |inventory| %>
+  <tr>
+    <td><%= fullname(inventory.employee) %></td>
+    <td><%=   inventory.comment == 'REC' ?  "Received from Supplier" : "Added Manually" %></td>
+    <td class='alignright'><%= inventory.quantity %></td>
+    <td class='alignright'><%= inventory.amount %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<%= debug @items_inventories %>
+<script>
+	//bof autocomplete for items
+	$( "#history_item_name" ).autocomplete({
+		source: function(request, response) {
+			$.ajax({
+				url: "/items/itemlist.js",
+				dataType: "json",
+				data: {term: request.term},
+				success: function( data ) {
+				   response( data );
+				}
+			});
+		},
+		focus: function( event, ui ) {
+			$( this).val( ui.item.label );
+				return false;
+		},
+		minLength: 2,
+	  	select: function( event, ui ) {
+			$( this ).html( ui.item.label );
+			$( "#history_item_id" ).val( ui.item.id );
+			return false;
+		}
+
+	});
+	//eof autocomplete for suppliers
+</script>
+

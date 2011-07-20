@@ -1,5 +1,6 @@
 class ReceivingItem < ActiveRecord::Base
     belongs_to :receiving
+    belongs_to :item
 
     validates :item_id, :presence => true
 end

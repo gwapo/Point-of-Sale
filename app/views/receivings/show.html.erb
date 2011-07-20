@@ -1,13 +1,16 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <b>Date Deliver:</b>
+  <%= @receiving.created_at.strftime("%B %d, %Y %l:%M:%S %p") %>
+</p>
 <p>
   <b>Employee:</b>
-  <%= @receiving.employee_id %>
+  <%=fullname(@receiving.employee) %>
 </p>
 
 <p>
   <b>Supplier:</b>
-  <%= @receiving.supplier_id %>
+  <%= @receiving.supplier.company_name unless @receiving.supplier.blank?  %>
 </p>
 
 <p>
@@ -15,11 +18,29 @@
   <%= @receiving.comment %>
 </p>
 
-<p>
-  <b>Receive type:</b>
-  <%= @receiving.receive_type %>
-</p>
 
+<br />
+<table class='sales'>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Cost Price</th>
+    <th>Unit Price</th>
+    <th>Quantity</th>
+    <th>Discount</th>
+    <th>Total</th>
+  </tr>
+ <% @receiving.receiving_items.each do |item| %>
+  <tr>
+    <td><%= item.item.name %></td>
+    <td><%= item.description %></td>
+    <td class='alignright'><%= item.cost_price %></td>
+    <td class='alignright'><%= item.unit_price %></td>
+    <td class='alignright'><%= item.quantity %></td>
+    <td class='alignright'><%= item.discount %></td>
+    <td class='alignright'><%= amount_total(item.cost_price, item.quantity, item.cost_price) %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "Test", receivings_path(:format => :pdf) %>
 
-<%= link_to 'Edit', edit_receiving_path(@receiving) %> |
-<%= link_to 'Back', receivings_path %>

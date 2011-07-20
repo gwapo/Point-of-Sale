@@ -2,12 +2,24 @@ class ReceivingsController < ApplicationController
   # GET /receivings
   # GET /receivings.xml
   def index
+=begin
     @receivings = Receiving.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @receivings }
     end
+=end
+   respond_to do |format|
+
+  format.pdf do
+		      render :pdf => "my_pdf", # pdf will download as my_pdf.pdf
+		        :layout => 'pdf', # uses views/layouts/pdf.haml
+		    :show_as_html => params[:debug].present? # renders html version if you set debug=true in URL
+		      end
+
+end
+
   end
 
   # GET /receivings/1

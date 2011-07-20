@@ -10,6 +10,11 @@ class CreateSales < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :sales, :customer_id
+    add_index :sales, :employee_id
+
+
   end
 
   def self.down

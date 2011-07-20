@@ -11,6 +11,8 @@ class CreateInventories < ActiveRecord::Migration
 
     add_index :inventories, :item_id
     add_index :inventories, :employee_id
+
+
   end
 
   def self.down

@@ -1,0 +1,12 @@
+<h1>New account</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', accounts_path %>
+<script>
+	$(function() {
+
+		$( "#account_check_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
+	});
+	</script>
+

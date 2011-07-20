@@ -80,4 +80,20 @@ class EmployeesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+    #GET /employees/searchemployee/1.js
+  def searchemployee
+      if params[:term]
+        @employees = Employee.all(:conditions => [" first_name like ?", params[:term] + '%'])
+      else
+        @employees = Employee.all
+      end
+
+        @employees_hash = []
+        @employees.each do |employee|
+        @employees_hash << { :id => employee.id, :label => employee.first_name + ' ' + employee.last_name }
+        end
+    render :json => @employees_hash
+  end
 end
+

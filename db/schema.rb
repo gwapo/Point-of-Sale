@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110715080135) do
+ActiveRecord::Schema.define(:version => 20110720035747) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "client_name"
+    t.datetime "check_date"
+    t.decimal  "amount",       :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "delivery_no"
+    t.string   "check_number"
+    t.string   "bank_name"
+    t.integer  "employee_id"
+  end
 
   create_table "customers", :force => true do |t|
     t.string   "first_name"
@@ -62,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20110715080135) do
     t.integer  "reorder_level"
   end
 
+  add_index "items", ["supplier_id"], :name => "index_items_on_supplier_id"
+
   create_table "receiving_items", :force => true do |t|
     t.integer  "receiving_id"
     t.integer  "item_id"
@@ -86,7 +100,7 @@ ActiveRecord::Schema.define(:version => 20110715080135) do
   create_table "sale_items", :force => true do |t|
     t.integer  "sale_id"
     t.integer  "item_id"
-    t.string   "quantity_purchased"
+    t.decimal  "quantity_purchased", :precision => 10, :scale => 0
     t.decimal  "item_cost_price",    :precision => 10, :scale => 0
     t.decimal  "item_unit_price",    :precision => 10, :scale => 0
     t.integer  "discount_percent"
@@ -106,7 +120,11 @@ ActiveRecord::Schema.define(:version => 20110715080135) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "sales_type",                                  :default => false
+    t.boolean  "order",                                       :default => true
   end
+
+  add_index "sales", ["customer_id"], :name => "index_sales_on_customer_id"
+  add_index "sales", ["employee_id"], :name => "index_sales_on_employee_id"
 
   create_table "store_configs", :force => true do |t|
     t.string   "company_name"

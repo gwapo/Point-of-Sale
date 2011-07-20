@@ -1,6 +1,4 @@
-<h1>Listing items</h1>
-
-<table>
+<table class='shorttable'>
   <tr>
     <th>Name</th>
     <th>Category</th>
@@ -9,27 +7,22 @@
     <th>Cost price</th>
     <th>Unit cost</th>
     <th>Quantity</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th> Action </th>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
     <td><%= item.name %></td>
     <td><%= item.category %></td>
-    <td><%= item.supplier_id %></td>
+    <td><%= item.supplier.company_name unless item.supplier.blank? %></td>
     <td><%= item.descriptions %></td>
-    <td><%= item.cost_price %></td>
-    <td><%= item.unit_cost %></td>
-    <td><%= item.quantity %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class='alignright'><%= item.cost_price %></td>
+    <td class='alignright'><%= item.unit_cost %></td>
+    <td class='alignright'><%= item.quantity %></td>
+    <td class='aligncenter'><%= link_to 'Show', item %>
+    <%#= link_to 'Edit', edit_item_path(item) %>
+    <%#= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Item', new_item_path %>
