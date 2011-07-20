@@ -4,10 +4,26 @@ class SuppliersController < ApplicationController
   def index
     @suppliers = Supplier.all
 
+=begin
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @suppliers }
     end
+=end
+ respond_to do |format|
+     format.html # index.html.erb
+format.pdf do
+
+          render :pdf => "file_name",
+
+                 :footer => {
+                    :center => "Center",
+                    :left => "Left",
+                    :right => "Right"
+                 }
+  end
+end
+
   end
 
   # GET /suppliers/1
