@@ -1,10 +1,21 @@
 Mypos::Application.routes.draw do
+  resources :accounts do
+    collection do
+       get 'schedules'
+       get 'list'
+     end
+  end
+
   resources :receiving_items
 
   resources :receivings
 
   get "reports/index"
-  get "sales/index"
+  get "reports/itemsearch"
+  get "reports/sales"
+  get "reports/customersales"
+  get "reports/employeesales"
+
 
   resources :inventories
   resources :sale_items
@@ -16,6 +27,7 @@ Mypos::Application.routes.draw do
   resources :sales do
     collection do
         get :sale_return
+        get :purchase
         post :sale_return_create
     end
   end
@@ -23,10 +35,16 @@ Mypos::Application.routes.draw do
   resources :items do
     collection do
        get 'itemlist'
+       get 'newitem'
      end
   end
 
-  resources :employees
+  resources :employees  do
+    collection do
+       get 'searchemployee'
+     end
+  end
+
   resources :suppliers  do
     collection do
        get 'searchsupplier'
