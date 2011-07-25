@@ -6,8 +6,6 @@
     <th>Name</th>
     <th>Email</th>
     <th>Phone number</th>
-    <th>Address</th>
-    <th>Comments</th>
     <th></th>
   </tr>
 
@@ -17,9 +15,8 @@
     <td><%= supplier.first_name %> <%= supplier.middle_name %> <%= supplier.last_name %></td>
     <td><%= supplier.email %></td>
     <td><%= supplier.phone_number %></td>
-    <td><%= supplier.address %></td>
-    <td><%= supplier.comments %></td>
-    <td><%= link_to 'Show', supplier %>
+
+    <td><%= link_to 'Show Details', supplier %>
     <%= link_to 'Edit', edit_supplier_path(supplier) %>
     <%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
@@ -27,6 +24,4 @@
 </table>
 
 <br />
-
-<%= link_to 'New Supplier', new_supplier_path %>
 

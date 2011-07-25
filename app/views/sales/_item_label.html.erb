@@ -9,8 +9,17 @@
     <div class="clearfloat"></div>
   </div>
   <div id="append">
-  <%= f.fields_for :sale_items do |builder| %>
-    <%= render "sale_item_fields", :f => builder %>
+  <%= f.fields_for :sale_items do |f| %>
+    <%#= render "sale_item_fields", :f => builder %>
+    <div id="salediv1">
+        <%= text_field_tag 'item_name','', :size => 10, :class => "item_name",:id => "item_name0"  %>
+        <%= f.text_field :item_unit_price, :size => 10, :class => "item_unit_price" %>
+        <%= f.text_field :quantity_purchased, :size => 10, :class => "quantity_purchased", :onkeyup => "getthefieldid2(this.id)" %>
+        <%= f.text_field :discount_percent, :size => 10, :class => "discount_percent" %>
+        <%= text_field_tag :amount, "", :size => 10, :id => "amount0_", :readonly => "readonly" %>
+        <%= f.hidden_field :item_id, :size => 10, :class => "item_id" %>
+    </div>
+
   <% end %>
   </div>
   <%= link_to "Add Item", "#", :id => 'add_item' %>

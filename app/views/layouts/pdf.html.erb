@@ -2,19 +2,14 @@
 <html>
 <head>
   <title>POS</title>
+  <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
 
   <%= csrf_meta_tag %>
 </head>
 <body>
 <div id="contentPdf">
-fffffffffffffff
+  <%= yield %>
 </div>
 </body>
 </html>
-<style>
-#contentPdf{
-  margin: 0 auto;
-  background-color:green;
-}
-</style>
 

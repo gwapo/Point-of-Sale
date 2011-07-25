@@ -1,0 +1,18 @@
+<table class='sales'>
+  <tr>
+    <th>Employee</th>
+    <th>Comment</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+
+<% @items_inventories.each do |inventory| %>
+  <tr>
+    <td><%= fullname(inventory.employee) %></td>
+    <td><%=   inventory.comment == 'REC' ?  "Received from Supplier" : "Added Manually" %></td>
+    <td class='alignright'><%= inventory.quantity %></td>
+    <td class='alignright'><%= inventory.amount %></td>
+  </tr>
+<% end %>
+</table>
+

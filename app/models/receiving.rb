@@ -10,6 +10,7 @@ class Receiving < ActiveRecord::Base
 private
 
     def add_item_id_to_inventory
+      @total_quantity = []
       receiving_items.each do |item|
         i = Item.find(item.item_id)
         if self.receive_type
@@ -20,6 +21,7 @@ private
         i.save
 
             inventory = Inventory.new
+            @total_quantity << item.quantity
             inventory.quantity = self.receive_type ? "#{ item.quantity}" : "-#{item.quantity}"
             inventory.item_id = item.item_id
             inventory.employee_id = 1
@@ -27,8 +29,13 @@ private
             inventory.amount = item.unit_price
             inventory.save
 
-      end
+      end#receiving_items.each do |item|
+      #self.amount =  totalamount (unit_price,number_of_quantity,discount)
+      #self.save
+    end #eof add_item_id_to_inventory
 
+    def number_of_quantity
+        @total_quantity.inject(:+)
     end
 
 end

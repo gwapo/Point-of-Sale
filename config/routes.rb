@@ -15,7 +15,8 @@ Mypos::Application.routes.draw do
   get "reports/sales"
   get "reports/customersales"
   get "reports/employeesales"
-
+  get "reports/lowinventory"
+  get "reports/highinventory"
 
   resources :inventories
   resources :sale_items

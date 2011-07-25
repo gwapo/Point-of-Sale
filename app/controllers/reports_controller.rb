@@ -2,6 +2,13 @@ class ReportsController < ApplicationController
   def index
   end
 
+    def lowinventory
+        @items = Item.all
+    end
+
+    def highinventory
+        @items = Item.all
+    end
 
 
   def itemsearch
@@ -13,8 +20,6 @@ class ReportsController < ApplicationController
         @item_name  = params[:history_item_name]
         @items_inventories = Inventory.all(:conditions => { :created_at => DateTime.new(year)..DateTime.new(year).end_of_year, :item_id => item_id, :comment => ['Add Item','REC'] } )
 
-    #else
-     #   @items_inventories = Inventory.all
     end
   end
 

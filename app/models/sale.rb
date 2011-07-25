@@ -12,6 +12,7 @@ private
 
     def add_item_id_to_inventory
       if self.order
+          @total = 0
           sale_items.each do |sale_item|
                 i = Item.find(sale_item.item_id)
                 if self.sales_type
@@ -20,6 +21,7 @@ private
                     i.quantity += sale_item.quantity_purchased.to_i
                 end
                     i.save
+
                  inventory = Inventory.new
                  inventory.quantity = self.sales_type ? "-#{sale_item.quantity_purchased}" : "#{sale_item.quantity_purchased}"
                  inventory.item_id = sale_item.item_id
@@ -28,11 +30,25 @@ private
                  inventory.amount = sale_item.item_unit_price
                  inventory.save
 
-          end
-      end
+           @total += totalamount(sale_item.quantity_purchased.to_i , sale_item.item_unit_price.to_f, sale_item.discount_percent.to_i)
 
+          end
+
+      end
+         self.amount = 78
     end
 
+    def totalamount quantity, price, discount
+        if discount != 0
+            subtotal(quantity,price) - (subtotal(quantity,price) - (discount/100))
+        else
+            subtotal(quantity,price)
+        end
+    end
+
+    def subtotal(quantity,price)
+        quantity * price
+    end
 
 
 end

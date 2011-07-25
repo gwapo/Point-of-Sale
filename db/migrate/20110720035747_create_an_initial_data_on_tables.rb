@@ -17,7 +17,14 @@ class CreateAnInitialDataOnTables < ActiveRecord::Migration
                        :email => "denniscarique@gmail.com"
 
       Customer.create :first_name => "johny",
-                    :last_name => "joe"
+                      :last_name => "joe",
+                      :country => "PH"
+
+      Customer.create :first_name => "jojo",
+                      :last_name => "d",
+                      :country => "PH"
+
+
 
       Item.create    :name => "Rails Book",
                    :category => "Book",
@@ -45,6 +52,10 @@ class CreateAnInitialDataOnTables < ActiveRecord::Migration
                   :comment => 'POS',
                   :quantity => -5,
                   :amount => 10
+
+      item      = Item.find(:first)
+      item.quantity = 15
+      item.save
 
   end
 

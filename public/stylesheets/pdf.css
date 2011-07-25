@@ -1,8 +1,5 @@
-#someid {
-  margin-left: 430px;
-  display: float;
-  height: 150px;
-  background-color: green;
-  width: 250px;
+#contentPdf{
+  margin: 0 auto;
+  background-color:red;
 }
 

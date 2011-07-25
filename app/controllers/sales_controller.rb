@@ -54,6 +54,7 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(params[:sale])
     @sale.employee_id = 1
+   # quantity = params[:sale][:quantity]
 
     respond_to do |format|
       if @sale.save
@@ -123,6 +124,9 @@ class SalesController < ApplicationController
       end
     end
   end
+
+
+
 
 
 

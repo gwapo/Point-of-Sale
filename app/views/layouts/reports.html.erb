@@ -18,15 +18,16 @@
       <div id="contentLeft">
         <h3>Sales</h3>
           <ul>
+            <li> <%= link_to 'All', reports_sales_path %> </li>
             <li> <%= link_to 'Customer', reports_customersales_path %> </li>
             <li> <%= link_to 'Employee', reports_employeesales_path %> </li>
             <li> <%#= link_to 'Item', reports_itemhistory_path %> </li>
-            <li> <%= link_to 'All', reports_sales_path %> </li>
+
           </ul>
           <h3>Inventory</h3>
           <ul>
-            <li> <%= link_to 'Low Inventory', "#" %> </li>
-            <li> <%= link_to 'High Inventory', "#" %> </li>
+            <li> <%= link_to 'Low Inventory', reports_lowinventory_path %> </li>
+            <li> <%= link_to 'High Inventory', reports_highinventory_path %> </li>
             <li> <%= link_to 'Item History', reports_itemsearch_path %> </li>
           </ul>
           <h3>Accounts</h3>

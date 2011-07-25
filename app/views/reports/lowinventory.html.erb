@@ -1,0 +1,30 @@
+<table class='sales'>
+  <tr>
+
+    <th>Category</th>
+    <th>Supplier</th>
+    <th>Desciptions</th>
+    <th>Cost Price</th>
+    <th>Unit Price</th>
+    <th>Quantity</th>
+    <th>Re-order</th>
+  </tr>
+
+<% @items.each do |item| %>
+  <% if item.quantity > item.reorder_level  %>
+  <tr>
+
+
+    <td><%= item.category %></td>
+    <td><%= fullname(item.supplier) %></td>
+    <td><%= item.descriptions %></td>
+
+    <td class='alignright'><%= item.cost_price %></td>
+    <td class='alignright'><%= item.unit_cost %></td>
+     <td class='alignright'><%= item.quantity %></td>
+    <td><%= item.reorder_level %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+

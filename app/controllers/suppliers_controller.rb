@@ -5,15 +5,17 @@ class SuppliersController < ApplicationController
     @suppliers = Supplier.all
 
     respond_to do |format|
-      #format.html # index.html.erb
-      #format.xml  { render :xml => @suppliers }
-      render :pdf => "file_name",
-                                :footer => {
-                    :center => "Center",
-                    :left => "Left",
-                    :right => "Right"
-                 }
-
+      format.html # index.html.erb
+      format.xml  { render :xml => @suppliers }
+      format.pdf do
+          render :pdf => "suppliers",
+                 :layout => "pdf.html",
+                 :footer => {
+                        :center => "Center",
+                        :left => "Left",
+                        :right => "Right"
+                     }
+      end
 
     end
   end
