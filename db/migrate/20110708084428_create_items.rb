@@ -14,7 +14,6 @@ class CreateItems < ActiveRecord::Migration
 
     add_index :items, :supplier_id
 
-
   end
 
   def self.down

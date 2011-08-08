@@ -1,5 +1,53 @@
 #contentPdf{
   margin: 0 auto;
-  background-color:red;
+  width:1000px;
+}
+
+.alignleft{
+	text-align:left;
+}
+.alignright{
+	text-align:right;
+}
+.aligncenter{
+	text-align:center;
+}
+td{
+	padding:0 10px;
+}
+
+#tableContainer{
+	margin:0 0 0 80px;
+}
+#info{
+	margin-left:20px;
+}
+
+b{
+	font: bold 13px "Lucida Sans Unicode";
+}
+p span{
+	color: black;
+	font: normal 13px "Lucida Sans Unicode";
+}
+table , table th, table td{
+	border-collapse: collapse;
+	padding: 8px 10px;
+	border-right:1px solid #FFFFFF;
+}
+table th{
+  min-width: 140px;
+  color: #003399;
+  font:normal 13px  "Lucida Sans Unicode";
+  background:none repeat scroll 0 0 #B9C9FE;
+  border-bottom:1px solid #FFFFFF;
+}
+table td{
+	min-width:100px;
+
+	background:none repeat scroll 0 0 #E8EDFF;
+	border-bottom:1px solid #FFFFFF;
+	color:#666699;
+	font:normal 12px  "Lucida Sans Unicode";
 }
 

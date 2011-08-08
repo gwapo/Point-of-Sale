@@ -6,8 +6,8 @@ class CreateSales < ActiveRecord::Migration
       t.text :comments
       t.integer :sale_detail_id
       t.string :payment_type
-      t.decimal :amount
-
+      t.decimal :amount, :precision => 8, :scale => 2, :default => 0
+      t.decimal :change, :precision => 8, :scale => 2, :default => 0
       t.timestamps
     end
 

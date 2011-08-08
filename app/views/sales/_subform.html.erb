@@ -38,8 +38,10 @@
   <div class="field">
     <%= f.label :amount %><br />
     <%= f.text_field :amount, :size => 20 %>
+    <%= f.hidden_field :customer_id, :value => 0, :size => 5 %>
   </div>
   <div class="addpayment">
-    <span>Add Payment</span>
+    <br />
+    <span class="link">Add Payment</span>
   </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110720035747) do
+ActiveRecord::Schema.define(:version => 20110731013644) do
 
   create_table "accounts", :force => true do |t|
     t.string   "client_name"
@@ -55,7 +55,9 @@ ActiveRecord::Schema.define(:version => 20110720035747) do
     t.string   "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "amount",      :precision => 10, :scale => 0, :default => 0
+    t.decimal  "amount",        :precision => 10, :scale => 0, :default => 0
+    t.integer  "resource_id"
+    t.string   "resource_type"
   end
 
   add_index "inventories", ["employee_id"], :name => "index_inventories_on_employee_id"
@@ -79,14 +81,16 @@ ActiveRecord::Schema.define(:version => 20110720035747) do
   create_table "receiving_items", :force => true do |t|
     t.integer  "receiving_id"
     t.integer  "item_id"
-    t.text     "description"
     t.integer  "quantity"
     t.decimal  "cost_price",   :precision => 10, :scale => 0
-    t.decimal  "unit_price",   :precision => 10, :scale => 0
     t.integer  "discount",                                    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "amount",       :precision => 10, :scale => 0, :default => 0
   end
+
+  add_index "receiving_items", ["item_id"], :name => "index_receiving_items_on_item_id"
+  add_index "receiving_items", ["receiving_id"], :name => "index_receiving_items_on_receiving_id"
 
   create_table "receivings", :force => true do |t|
     t.integer  "employee_id"
@@ -97,13 +101,17 @@ ActiveRecord::Schema.define(:version => 20110720035747) do
     t.datetime "updated_at"
   end
 
+  add_index "receivings", ["employee_id"], :name => "index_receivings_on_employee_id"
+  add_index "receivings", ["supplier_id"], :name => "index_receivings_on_supplier_id"
+
   create_table "sale_items", :force => true do |t|
     t.integer  "sale_id"
     t.integer  "item_id"
-    t.decimal  "quantity_purchased", :precision => 10, :scale => 0
-    t.decimal  "item_cost_price",    :precision => 10, :scale => 0
-    t.decimal  "item_unit_price",    :precision => 10, :scale => 0
-    t.integer  "discount_percent"
+    t.decimal  "quantity_purchased", :precision => 10, :scale => 0, :default => 0
+    t.decimal  "item_cost_price",    :precision => 10, :scale => 0, :default => 0
+    t.decimal  "item_unit_price",    :precision => 10, :scale => 0, :default => 0
+    t.integer  "discount_percent",                                  :default => 0
+    t.decimal  "amount",             :precision => 8,  :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -116,11 +124,12 @@ ActiveRecord::Schema.define(:version => 20110720035747) do
     t.integer  "employee_id"
     t.text     "comments"
     t.string   "payment_type"
-    t.decimal  "amount",       :precision => 10, :scale => 0
+    t.decimal  "amount",       :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "change",       :precision => 8, :scale => 2, :default => 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "sales_type",                                  :default => false
-    t.boolean  "order",                                       :default => true
+    t.boolean  "sales_type",                                 :default => false
+    t.boolean  "order",                                      :default => true
   end
 
   add_index "sales", ["customer_id"], :name => "index_sales_on_customer_id"

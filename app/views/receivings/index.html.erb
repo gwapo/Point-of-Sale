@@ -1,6 +1,4 @@
-<h1>Deliveries</h1>
-<br />
-<table class='sales'>
+<table >
   <tr>
     <th>Delivery Date</th>
     <th>Employee</th>
@@ -8,6 +6,16 @@
     <th>Comment</th>
     <th></th>
   </tr>
+   <% @receivings.each do |receive| %>
+  <tr>
 
+    <td class='alignright'><%= receive.created_at %></td>
+    <td class='alignright'><%= fullname(receive.employee) %></td>
+    <td class='alignright'><%= full_name(receive.supplier) unless receive.supplier.blank? %></td>
+    <td class='alignright'><%= receive.comment %></td>
+    <td class='alignright'><%= link_to 'Show Details', receiving_path(receive) %></td>
+  </tr>
+  <% end %>
 </table>
+<br />
 

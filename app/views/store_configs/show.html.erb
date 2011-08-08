@@ -1,37 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div id="item_container">
 
-<h1><%= @pagetitle %></h1>
 <p>
-  <b>Company name:</b>
-  <%= @store_config.company_name %>
+  <label>Company name:</label>
+  <span><%= @store_config.company_name %></span>
 </p>
 
 <p>
-  <b>Email:</b>
-  <%= @store_config.email %>
+  <label>Email:</label>
+  <span><%= @store_config.email %></span>
 </p>
 
 <p>
-  <b>Fax:</b>
-  <%= @store_config.fax %>
+  <label>Fax:</label>
+  <span><%= @store_config.fax %></span>
 </p>
 
 <p>
-  <b>Phone:</b>
-  <%= @store_config.phone %>
+  <label>Phone:</label>
+  <span><%= @store_config.phone %></span>
 </p>
 
 <p>
-  <b>Website:</b>
-  <%= @store_config.website %>
+  <label>Website:</label>
+  <span><%= @store_config.website %></span>
 </p>
 
 <p>
-  <b>Address:</b>
-  <%= @store_config.address %>
+  <label>Address:</label>
+  <span><%= @store_config.address %></span>
+</p>
+<p>
+  <label>&nbsp;</label>
+  <span><%= link_to 'Edit', edit_store_config_path(@store_config), :class => "link" %>  &nbsp; <%= link_to 'Back', store_configs_path, :class => "link" %></span>
 </p>
 
-
-<%= link_to 'Edit', edit_store_config_path(@store_config) %> |
-<%= link_to 'Back', store_configs_path %>
+</div>
 

@@ -1,41 +1,41 @@
-<p id="notice"><%= notice %></p>
-
+<div id="item_container">
 <p>
-  <b>Name:</b>
-  <%= @item.name %>
+  <label>Name:</label>
+  <span><%= @item.name %> </span>
 </p>
 
 <p>
-  <b>Category:</b>
-  <%= @item.category %>
+  <label>Category:</label>
+  <span><%= @item.category %></span>
 </p>
 
 <p>
-  <b>Supplier:</b>
-  <%= @item.supplier.company_name unless @item.supplier.blank? %>
+  <label>Supplier:</label>
+  <span><%= @item.supplier.company_name unless @item.supplier.blank? %></span>
 </p>
 
 <p>
-  <b>Descriptions:</b>
-  <%= @item.descriptions %>
+  <label>Descriptions:</label>
+  <span><%= @item.descriptions %></span>
 </p>
 
 <p>
-  <b>Cost price:</b>
-  <%= @item.cost_price %>
+  <label>Cost price:</label>
+  <span><%= @item.cost_price %></span>
 </p>
 
 <p>
-  <b>Unit cost:</b>
-  <%= @item.unit_cost %>
+  <label>Unit cost:</label>
+  <span><%= @item.unit_cost %></span>
 </p>
 
 <p>
-  <b>Quantity:</b>
-  <%= @item.quantity %>
+  <label>Quantity:</label>
+  <span><%= @item.quantity %></span>
 </p>
-
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<p>
+  <label>&nbsp;</label>
+  <span><%= link_to 'Edit', edit_item_path(@item), :class => "link" %> </span>
+</p>
+</div>
 

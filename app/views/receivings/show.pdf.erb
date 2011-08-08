@@ -1,28 +1,26 @@
-<p id="notice"><%= notice %></p>
-<div id="info">
-
 <p>
   <b>Date Deliver:</b>
- <%= @receiving.created_at.strftime("%B %d, %Y %l:%M:%S %p") %>
+   <span><%= @receiving.created_at.strftime("%B %d, %Y %l:%M:%S %p") %></span>
 </p>
 <p>
   <b>Employee:</b>
-  <%=fullname(@receiving.employee) %>
+   <span><%=fullname(@receiving.employee) %></span>
 </p>
 
 <p>
   <b>Supplier:</b>
-  <%= @receiving.supplier.company_name unless @receiving.supplier.blank?  %>
+   <span><%= @receiving.supplier.company_name unless @receiving.supplier.blank?  %></span>
 </p>
 
 <p>
   <b>Comment:</b>
-  <%= @receiving.comment %>
+   <span><%= @receiving.comment %></span>
 </p>
-</div>
-
 <br />
-<table class='sales'>
+
+<div id="tableContainer">
+
+<table>
   <tr>
     <th>Name</th>
     <th>Cost Price</th>
@@ -40,9 +38,5 @@
   </tr>
 <% end %>
 </table>
-<br />
-<p>
-
-<%= link_to printable, receiving_path(@receiving, :format => :pdf) %>
-</p>
+</div>
 

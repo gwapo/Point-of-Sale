@@ -8,6 +8,7 @@ class SaleItemTest < ActiveSupport::TestCase
 end
 
 
+
 # == Schema Information
 #
 # Table name: sale_items
@@ -15,7 +16,7 @@ end
 #  id                 :integer(4)      not null, primary key
 #  sale_id            :integer(4)
 #  item_id            :integer(4)
-#  quantity_purchased :string(255)
+#  quantity_purchased :integer(10)
 #  item_cost_price    :integer(10)
 #  item_unit_price    :integer(10)
 #  discount_percent   :integer(4)

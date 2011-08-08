@@ -26,7 +26,7 @@ class CreateAnInitialDataOnTables < ActiveRecord::Migration
 
 
 
-      Item.create    :name => "Rails Book",
+      Item.create  :name => "Rails Book",
                    :category => "Book",
                    :supplier_id => 1,
                    :descriptions => "20 pieces of rails books from anthony",
@@ -35,23 +35,35 @@ class CreateAnInitialDataOnTables < ActiveRecord::Migration
                    :quantity => 20,
                    :reorder_level => 5
 
+      Item.create  :name => "Ruby Book",
+                   :category => "Book",
+                   :supplier_id => 1,
+                   :descriptions => "10 pieces of ruby books from anthony",
+                   :cost_price => 13,
+                   :unit_cost => 15,
+                   :quantity => 10,
+                   :reorder_level => 5
+
 
       Sale.create :customer_id => 1,
                   :employee_id => 1,
                   :sales_type  => 1,
                   :order => 1
 
-      SaleItem.create :sale_id => 1,
+      sale = SaleItem.create :sale_id => 1,
                   :item_id => 1,
                   :quantity_purchased => 5,
                   :item_cost_price => 10,
-                  :item_unit_price => 12
+                  :item_unit_price => 12,
+                  :amount => 60
 
       Inventory.create :item_id => 1,
                   :employee_id => 1,
                   :comment => 'POS',
                   :quantity => -5,
-                  :amount => 10
+                  :amount => 10,
+                  :resource=> sale
+
 
       item      = Item.find(:first)
       item.quantity = 15

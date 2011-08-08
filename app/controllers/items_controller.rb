@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
   # GET /items/new.xml
   def new
     @item = Item.new
-    @suppliers = Supplier.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @item }
@@ -35,7 +34,6 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-      @suppliers = Supplier.all
     @item = Item.find(params[:id])
   end
 

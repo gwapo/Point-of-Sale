@@ -1,26 +1,27 @@
   <div id="sales_label">
     <ul>
-      <li><%= f.label :item_id, "Item Name" %></li>
-      <li><%= f.label :item_unit_price, "Unit Price" %></li>
-      <li><%= f.label :quantity_purchased, "Quantity" %></li>
-      <li><%= f.label :discount_percent, "Percent Discount " %></li>
-      <li><%= f.label :amount, "Amount" %></li>
+      <li><%= label_tag "", "Action", :class => 'shortlabel' %></li>
+      <li><%= f.label :item_id, "Item Name",  :class => "itemlabel" %></li>
+      <li><%= f.label :item_unit_price, "Unit Price", :class => "longlabel" %></li>
+      <li><%= f.label :quantity_purchased, "Quantity", :class => "shortlabel" %></li>
+      <li><%= f.label :discount_percent, "Discount (%)", :class => "longlabel" %></li>
+      <li><%= f.label :amount, "Amount", :value => 0, :class => "longlabel" %></li>
     </ul>
     <div class="clearfloat"></div>
   </div>
   <div id="append">
   <%= f.fields_for :sale_items do |f| %>
-    <%#= render "sale_item_fields", :f => builder %>
-    <div id="salediv1">
-        <%= text_field_tag 'item_name','', :size => 10, :class => "item_name",:id => "item_name0"  %>
-        <%= f.text_field :item_unit_price, :size => 10, :class => "item_unit_price" %>
-        <%= f.text_field :quantity_purchased, :size => 10, :class => "quantity_purchased", :onkeyup => "getthefieldid2(this.id)" %>
-        <%= f.text_field :discount_percent, :size => 10, :class => "discount_percent" %>
-        <%= text_field_tag :amount, "", :size => 10, :id => "amount0_", :readonly => "readonly" %>
+      <div id="salediv">
+        <%= link_to "Delete" , "#",:id => :sale_deleteitem0, :class => :sale_deleteitem, :onclick => "removediv2(this)"  %>
+        <%= f.text_field :name, :class => "item_name",  :onkeyup => "create_autocomplete(this.id)"  %>
+        <%= f.text_field :item_unit_price, :class => "item_unit_price" %>
+        <%= f.text_field :quantity_purchased, :class => "quantity_purchased",:onkeyup => "getthefield2(this.id)" %>
+        <%= f.text_field :discount_percent, :class => "discount_percent" %>
+        <%= f.text_field :amount, :class => "amount", :readonly => "readonly" %>
         <%= f.hidden_field :item_id, :size => 10, :class => "item_id" %>
-    </div>
-
+      </div>
   <% end %>
   </div>
-  <%= link_to "Add Item", "#", :id => 'add_item' %>
+  <br />
+  <%= link_to "Add Item", "#", :id => 'sale_add_item', :class => "link" %>
 

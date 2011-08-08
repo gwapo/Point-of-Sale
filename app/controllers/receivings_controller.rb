@@ -1,6 +1,7 @@
 class ReceivingsController < ApplicationController
   # GET /receivings
   # GET /receivings.xml
+
   def index
 
     @receivings = Receiving.all
@@ -24,6 +25,15 @@ class ReceivingsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @receiving }
+      format.pdf do
+          render :pdf => "receive",
+                 :layout => "pdf.html",
+                 :footer => {
+                        :center => "Center",
+                        :left => "Left",
+                        :right => "Right"
+                     }
+      end
     end
   end
 

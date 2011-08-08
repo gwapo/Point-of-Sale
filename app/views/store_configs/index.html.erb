@@ -1,4 +1,4 @@
-<%= @pagetitle %>
+
 <% unless @store_configs.blank? %>
   <table class='sales'>
     <tr>
@@ -6,7 +6,6 @@
       <th>Email</th>
       <th>Fax</th>
       <th>Phone</th>
-      <th>Website</th>
       <th>Address</th>
       <th>Action</th>
     </tr>
@@ -19,15 +18,11 @@
       <td><%= store_config.email %></td>
       <td><%= store_config.fax %></td>
       <td><%= store_config.phone %></td>
-      <td><%= store_config.website %></td>
       <td><%= store_config.address %></td>
-      <td><%= link_to 'Show', store_config %> | <%= link_to 'Edit', edit_store_config_path(store_config) %>
-       | <%= link_to 'Destroy', store_config, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Show Detail', store_config %> | <%= link_to 'Edit', edit_store_config_path(store_config) %>
+      </td>
     </tr>
   <% end %>
   </table>
 <% end %>
-<br />
-
-<%= link_to 'New Store config', new_store_config_path %>
 

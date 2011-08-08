@@ -54,11 +54,17 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(params[:sale])
     @sale.employee_id = 1
-   # quantity = params[:sale][:quantity]
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to(sales_url) }
+       @quantity_purchased = []
+
+       @saleitems = SaleItem.find(:all, :conditions => { :sale_id => @sale.id })
+       #@saleitems.each do |sale_item|
+       #  @quantity_purchased   << sale_item.quantity_purchased
+       #end
+
+        format.html  { redirect_to(@sale, :notice => 'Sale  was successfully created.') }
         format.xml  { render :xml => @sale, :status => :created, :location => @sale }
       else
         format.html { render :action => "new" }
@@ -127,6 +133,21 @@ class SalesController < ApplicationController
 
 
 
+    #def number_of_quantity
+    #    @item_amount.inject(:+)
+    #end #eof number_of_quantity
+
+    def totalamount unit_price = 0, quantity = 0, discount = 0
+        if discount > 0
+           subamount( unit_price,quantity) - (subamount( unit_price,quantity)  * (discount.to_f/100))
+        else
+           subamount( unit_price,quantity)
+        end
+    end#eof totalamount unit_price = 0, quantity = 0, discount = 0
+
+    def subamount unit_price , quantity
+        unit_price.to_f * quantity.to_i
+    end #subamount unit_price , quantity
 
 
 

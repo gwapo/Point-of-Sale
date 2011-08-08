@@ -3,6 +3,16 @@ class Item < ActiveRecord::Base
     has_many :sales
     has_many :sale_items
     belongs_to :supplier
+    has_one :inventory, :as => :resource, :dependent => :destroy
+
+    #server side validations
+    validates :name, :presence => true
+    validates :category, :presence => true
+    validates :cost_price, :presence => true
+    validates :unit_cost, :presence => true
+    validates :quantity, :presence => true
+    validates :reorder_level, :presence => true
+
 
     after_create :add_item_id_to_inventory
 
@@ -12,7 +22,8 @@ class Item < ActiveRecord::Base
               :item_id => self.id,
               :employee_id => 1,
               :comment => 'Add Item',
-              :amount => self.cost_price
+              :amount => self.cost_price,
+              :resource => Item.find(self.id)
              )
      end
 

@@ -1,3 +1,4 @@
+<div id="item_container">
 <%= form_for(@customer) do |f| %>
   <% if @customer.errors.any? %>
     <div id="error_explanation">
@@ -12,45 +13,46 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
+    <%= f.label :first_name %>
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name %>
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :phone_number %><br />
+    <%= f.label :phone_number %>
     <%= f.text_field :phone_number %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :street_address %><br />
+    <%= f.label :street_address %>
     <%= f.text_field :street_address %>
   </div>
   <div class="field">
-    <%= f.label :city %><br />
+    <%= f.label :city %>
     <%= f.text_field :city %>
   </div>
   <div class="field">
-    <%= f.label :state %><br />
+    <%= f.label :state %>
     <%= f.text_field :state %>
   </div>
   <div class="field">
-    <%= f.label :country %><br />
-   <%= localized_country_select(:customer, :country, [],{:selected => "AL", :include_blank => 'Please choose...'}) %>
-
+    <%= f.label :country %>
+   <%= localized_country_select(:customer, :country, [], { :include_blank => 'Please choose...',  :selected => "PH"}) %>
 
   </div>
-  <div class="field">
-    <%= f.label :comments %><br />
-    <%= f.text_area :comments %>
+  <div class="fieldtextarea">
+    <%= f.label :comments %>
+    <%= f.text_area :comments, :rows => 3 %>
   </div>
   <div class="actions">
+    <label>&nbsp;</label>
     <%= f.submit %>
   </div>
 <% end %>
+</div>
 

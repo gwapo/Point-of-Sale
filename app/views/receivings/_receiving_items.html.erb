@@ -1,10 +1,9 @@
 <div id="mainLeftReceiving">
   <div id="receiving_label">
     <ul>
-      <li><%= label_tag "","Delete ", :class => "shortlabel" %></li>
-      <li><%= f.label :item_id, " Item Name", :class => "longlabel"  %></li>
+      <li><%= label_tag "","Action ", :class => "shortlabel" %></li>
+      <li><%= f.label :item_id, " Item Name", :class => "itemlabel"  %></li>
       <li><%= f.label :unit_cost, "Cost Price", :class => "longlabel" %></li>
-      <li><%= f.label :unit_price, "Unit Price", :class => "shortlabel" %></li>
       <li><%= f.label :quantity, "Quantity" , :class => "shortlabel"%></li>
       <li><%= f.label :discount, " Discount %" , :class => "shortlabel"%></li>
       <li><%= f.label :amount, "Amount", :class => "longlabel" %></li>
@@ -14,15 +13,14 @@
 
   <div id="receive_append">
     <%= f.fields_for :receiving_items do |f| %>
-       <div id="receive1">
-          <%= link_to "Delete" , "#", :id => "receiving_deleteitem0", :class => "receiving_deleteitem"  %>
-          <%= text_field_tag 'r_item_name','', :size => 10, :class => "r_item_name0_",:id => "r_item_name0_"  %>
-          <%= f.hidden_field :item_id, :value => "", :size => 5, :class => "r_item_id" %>
-          <%= f.text_field :cost_price, :size => 10, :class => "r_cost_price" %>
-          <%= f.text_field :unit_price, :size => 10, :class => "r_unit_price" %>
-          <%= f.text_field :quantity, :size => 10, :class => "r_quantity", :onkeyup => "getthefieldid(this.id)"  %>
-          <%= f.text_field :discount, :size => 10, :class => "r_discount" %>
-          <%= text_field_tag :amount, "", :size => 10, :class => "r_amount0_", :id => "r_amount0_", :readonly => "readonly" %>
+       <div id="receive" class="receive">
+          <%= link_to "Delete" , "#", :id => "receiving_deleteitem0", :class => :item_id, :onclick => "removediv(this)"  %>
+          <%= f.text_field :name,  :class => "r_name",  :onkeyup => "create_autocomplete2(this.id)"  %>
+          <%= f.hidden_field :item_id, :size => 5, :class => "r_item_id" %>
+          <%= f.text_field :cost_price, :value => 0, :class => "r_cost_price" %>
+          <%= f.text_field :quantity, :value => 0, :class => "r_quantity", :onkeyup => "getthefield(this.id)"  %>
+          <%= f.text_field :discount, :value => 0, :class => "r_discount" %>
+          <%= f.text_field :amount, :value => 0, :class => "r_amount", :readonly => "readonly" %>
         </div>
     <% end %>
   </div>

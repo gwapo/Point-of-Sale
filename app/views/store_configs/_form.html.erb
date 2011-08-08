@@ -1,3 +1,4 @@
+<div id="item_container">
 <%= form_for(@store_config) do |f| %>
   <% if @store_config.errors.any? %>
     <div id="error_explanation">
@@ -36,7 +37,9 @@
     <%= f.text_field :address %>
   </div>
   <div class="actions">
+    <label>&nbsp;</label>
     <%= f.submit "Configure Store" %>
   </div>
 <% end %>
+</div>
 

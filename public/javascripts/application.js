@@ -42,76 +42,28 @@ $(function(){
 
 
    // bof sale --------------------------------------------------------
-   		//bof autocomplete for first column
-
-		create_autocomplete(0);
-
-		function create_autocomplete(a){
-		  $( "#item_name" + a ).autocomplete({
-				source: function(request, response) {
-					$.ajax({
-						url: "/items/itemlist.js",
-						dataType: "json",
-						data: {term: request.term},
-						success: function( data ) {
-						    response( data );
-						}
-				});
-				},
-				minLength: 2,
-			  	focus: function( event, ui ) {
-						$( "#item_name" + a ).val( ui.item.label );
-						return false;
-					},
-
-					select: function( event, ui ) {
-						$( "#item_name" + a ).val( ui.item.label );
-						$( "#sale_sale_items_attributes_" + a + "_item_id").val( ui.item.id );
-						$( "#sale_sale_items_attributes_" + a + "_item_unit_price").val( ui.item.unit_cost );
-						$( "#sale_sale_items_attributes_" + a + "_quantity_purchased").val( 1 );
-						$( "#sale_sale_items_attributes_" + a + "_quantity_purchased").val( 1 );
-						$( "#amount" + a +"_" ).val( ui.item.unit_cost );
-						$(".cancelsale").show();
-						return false;
-					}
-
-				});
-		}
-
-   		//eof autocomplete for first column
 
 
    //bof of cloning
-   $("#add_item").click(function(){
+   $("#sale_add_item").click(function(){
 
-     var num  = $('#append div').length;
+     var original_data  = $("#append div:last-child input[type='text']:first").attr('id');
+     	original_data = original_data.substring(27);
+     var num = parseInt(original_data.slice(0,original_data.indexOf("_")));
      var newNum  = new Number(num + 1);
-     var newDiv = $('#salediv' + num ).clone().attr('id','salediv' + newNum);
+     var newDiv = $('#salediv' ).clone();
 
 	 var sale_attributes = 'sale_sale_items_attributes_';
 	 var name_attributes = 'sale[sale_items_attributes][';
 
-	 var item_name = newDiv.children('.item_name').attr('id', 'item_name' + newNum).attr('name','item_name' + newNum)
-     var item_id = newDiv.children('.item_id').attr('id', sale_attributes + newNum + '_item_id').attr('name', name_attributes + newNum +'][item_id]');
+	 var r_item_delete = newDiv.children('.receiving_deleteitem').attr('id','sale_deleteitem' + newNum)
+	 var item_name = newDiv.children('.item_name').attr('id', sale_attributes + newNum + '_name').attr('name', name_attributes + newNum +'][name]');
+	 var item_id = newDiv.children('.item_id').attr('id', sale_attributes + newNum + '_item_id').attr('name', name_attributes + newNum +'][item_id]');
      var quantity_purchased = newDiv.children('.quantity_purchased').attr('id', sale_attributes + newNum + '_quantity_purchased').attr('name', name_attributes + newNum +'][quantity_purchased]');
      var item_unit_price = newDiv.children('.item_unit_price').attr('id', sale_attributes + newNum +'_item_unit_price').attr('name', name_attributes + newNum +'][item_unit_price]');
      var discount_percent = newDiv.children('.discount_percent').attr('id', sale_attributes + newNum +'_discount_percent').attr('name', name_attributes + newNum +'][discount_percent]');
 	var amount = newDiv.children('#amount0_').attr('id', 'amount' + newNum + "_")
 
-
-		//autocomplete
-		item_name.focus(function(){
-			create_autocomplete(newNum);
-		});
-
-		//calculate on client side the total amount
-
-		quantity_purchased.keyup(function(){
-			var price = parseFloat($(amount).val());
-			var unit = parseFloat($(quantity_purchased).val());
-			//alert('gg');
-			//amount.val(price*unit);
-		});
 
 
 	//set all clone fields to blank
@@ -162,10 +114,11 @@ $(function(){
 	//cancel payment
 	$(".cancelsale").hide();
 
-	//add payment
+	//click add payment
 	$(".addpayment").click(function(){
 		$("#sale_submit").show().removeAttr('disabled');
 	});
+	//sale submit disable
 	$("#sale_submit").hide().attr('disabled','disabled');
 
 
@@ -175,85 +128,34 @@ $(function(){
    // eof sale --------------------------------------------------------
 
 	//bof receiving
-   $('#receive0').children().val('');
    $("a#receive_add_item").click(function(){
 
-     var rlength  = parseInt($('#receive_append div:last').attr('id').substring(7));
-     var r  = new Number(rlength + 1);
+     var original_data  = $("#receive_append div:last-child input[type='text']:first").attr('id');
+     	original_data = original_data.substring(37);
+     var rlength = parseInt(original_data.slice(0,original_data.indexOf("_")));
+     var rlength  = new Number(rlength + 1);
 
-     var receive = $('#receive' + rlength ).clone().attr('id','receive' + r );
+     var receive = $('#receive_append div:last-child').clone();
 	 var r_attributes = 'receiving_receiving_items_attributes_';
-	 var r_name = 'receiving[receiving_items_attributes][';
+	 var r_name_attr = 'receiving[receiving_items_attributes][';
 
 	 var r_item_delete = receive.children('.receiving_deleteitem').attr('id','receiving_deleteitem' + rlength)
+	 var r_name = receive.children('.r_name').attr('id', r_attributes + rlength + '_name').attr('name', r_name_attr + rlength +'][name]').val("");
+	 var r_item_id = receive.children('.r_item_id').attr('id', r_attributes + rlength + '_item_id').attr('name', r_name_attr + rlength +'][item_id]').val("");
+	 var r_cost_price = receive.children('.r_cost_price').attr('id', r_attributes + rlength + '_cost_price').attr('name', r_name_attr + rlength +'][cost_price]').val( 0 );
+	 var r_quantity = receive.children('.r_quantity').attr('id', r_attributes + rlength + '_quantity').attr('name', r_name_attr + rlength +'][quantity]').val( 0 );
+     var r_discount = receive.children('.r_discount').attr('id', r_attributes + rlength + '_discount').attr('name', r_name_attr + rlength +'][discount]').val( 0 );
+	 var r_amount = receive.children('.r_amount').attr('id', r_attributes + rlength + '_amount').attr('name', r_name_attr + rlength +'][amount]').val( 0 );
 
-	 var r_item_name = receive.children('.r_item_name0_').attr('id', 'r_item_name' + rlength + '_').attr('name','r_item_name' + rlength + '_')
-	 var r_item_id = receive.children('.r_item_id').attr('id', r_attributes + rlength + '_item_id').attr('name', r_name + rlength +'][item_id]');
-	 var r_cost_price = receive.children('.r_cost_price').attr('id', r_attributes + rlength + '_cost_price').attr('name', r_name + rlength +'][cost_price]');
-	 var r_unit_price = receive.children('.r_unit_price').attr('id', r_attributes + rlength + '_unit_price').attr('name', r_name + rlength +'][unit_price]');
-	 var r_quantity = receive.children('.r_quantity').attr('id', r_attributes + rlength + '_quantity').attr('name', r_name + rlength +'][quantity]');
-     var r_discount = receive.children('.r_discount').attr('id', r_attributes + rlength + '_discount').attr('name', r_name + rlength +'][discount]');
-	 var r_amount = receive.children('.r_amount0_').attr('id', 'r_amount' + rlength + '_' );
-
-	//autocomplete
-	r_item_name.focus(function(){
-		create_autocomplete2(rlength);
-	});
-
-
-
-	//set all clone fields to blank
-	receive.children().val('');
 
     //clone receiving
     $("#receive_append").append(receive);
-
-	//delete row
-	r_item_delete.click(function(e) {
-        e.preventDefault();
- 		$(this).parent().remove();
-	});
-
 
 	return false;
     }); //close receiving cloning
 
 
 
-	//autocomplete for first row on receiving items
-	create_autocomplete2(0);
-
-	function create_autocomplete2(b){
-
-		$( "#r_item_name" + b + "_" ).autocomplete({
-				source: function(request, response) {
-					$.ajax({
-					url: "/items/itemlist.js",
-					dataType: "json",
-					data: {term: request.term},
-						success: function( data ) {
-						   response( data );
-						}
-					});
-				},
-				minLength: 2,
-				focus: function( event, ui ) {
-					$( "#r_item_name" + b + "_").val( ui.item.label );
-						return false;
-				},
-
-				select: function( event, ui ) {
-					$( "#r_item_name" + b + "_" ).val( ui.item.label );
-					$( "#receiving_receiving_items_attributes_" + b + "_item_id" ).val( ui.item.id );
-					$( "#receiving_receiving_items_attributes_" + b + "_unit_price" ).val( ui.item.unit_cost );
-					$( "#receiving_receiving_items_attributes_" + b + "_quantity" ).val(1);
-					$( "#receiving_receiving_items_attributes_" + b + "_cost_price" ).val( ui.item.cost_price );
-					$( "#r_amount" + b + "_" ).val( ui.item.unit_cost );
-					return false;
-				}
-
-			});
-	}//close autocomplete function 2
 
 	//bof autocomplete for suppliers
 	$( "#receiving_deletecustomer" ).hide();
@@ -297,30 +199,116 @@ $(function(){
 
 
  });
+   		//bof autocomplete for first column
 
- function getthefieldid(b){
- 	var c = b.substring(37);
- 	var currentid = c.slice(0,c.indexOf("_"));
- 	var returndata = b.substring(0,39);
-	var return_unit_price = "#"+ returndata + "unit_price";
-	var return_quantity = "#"+ returndata + "quantity";
 
-	var a = parseFloat($(return_unit_price).val());
-	var b = $(return_quantity).val();
-	var total = (a*b);
-	$("#r_amount"+ currentid + "_").val(total);
+		function create_autocomplete(id){
+		var temp_name = id.substring(27);
+		var current_id = temp_name.slice(0,temp_name.indexOf("_"));
 
+		var sale_attr = "#sale_sale_items_attributes_";
+		  $( sale_attr + current_id + "_name").autocomplete({
+				source: function(request, response) {
+					$.ajax({
+						url: "/items/itemlist.js",
+						dataType: "json",
+						data: {term: request.term},
+						success: function( data ) {
+						    response( data );
+						}
+				});
+				},
+				minLength: 2,
+			  	focus: function( event, ui ) {
+						$( sale_attr + current_id + "_name").val( ui.item.label );
+						return false;
+					},
+
+					select: function( event, ui ) {
+						$( sale_attr + current_id + "_name").val( ui.item.label );
+						$( sale_attr + current_id + "_item_id").val( ui.item.id );
+						$( sale_attr + current_id + "_item_unit_price").val( ui.item.unit_cost );
+						$( sale_attr + current_id + "_quantity_purchased").val( 1 );
+						$(".cancelsale").show();
+						return false;
+					}
+
+				});
+
+		}
+
+   		//eof autocomplete for first column
+
+
+ 	//autocomplete for first row on receiving items
+	function create_autocomplete2(id){
+		var temp_name = id.substring(37);
+		var current_id = temp_name.slice(0,temp_name.indexOf("_"));
+		var receiving_attributes = "#receiving_receiving_items_attributes_";
+		var temp_id = receiving_attributes + current_id;
+
+		$( temp_id + "_name").autocomplete({
+				source: function(request, response) {
+					$.ajax({
+					url: "/items/itemlist.js",
+					dataType: "json",
+					data: {term: request.term},
+						success: function( data ) {
+						   response( data );
+						}
+					});
+				},
+				minLength: 2,
+				focus: function( event, ui ) {
+					$( temp_id + "_name").val( ui.item.label );
+						return false;
+				},
+
+				select: function( event, ui ) {
+					$( temp_id + "_name" ).val( ui.item.label );
+					$( temp_id + "_item_id" ).val( ui.item.id );
+					$( temp_id + "_unit_price" ).val( ui.item.unit_cost );
+					$( temp_id + "_quantity" ).val(1);
+					$( temp_id + "_cost_price" ).val( ui.item.cost_price );
+					$( temp_id + "_amount" ).val( ui.item.unit_cost );
+					return false;
+				}
+
+			});
+	}//close autocomplete function 2
+
+
+
+ function getthefield(id){
+ 	var c = id.substring(37);
+ 	var current_id = c.slice(0,c.indexOf("_"));
+ 	var returndata = "#" + id.substring(0,37);
+	var cost_price = parseFloat($(returndata + current_id + "_cost_price").val());
+	var quantity =  $(returndata + current_id + "_quantity").val();
+	$(returndata + current_id + "_amount").val(quantity * cost_price);
  }
- function getthefieldid2(d){
- 	var d = d.substring(27);
- 	var currentid = d.slice(0,d.indexOf("_"));
- 	var returndata = "sale_sale_items_attributes_" + currentid;
- 	var return_quantity = $("#"+ returndata + "_quantity_purchased").val();
- 	var return_price = $("#"+ returndata + "_item_unit_price").val();
- 	var total = (return_quantity*return_price);
-	$("#amount"+ currentid + "_").val(total);
 
- 	//sale_sale_items_attributes_0_quantity_purchased
- 	alert(total);
+ function getthefield2(id){
+ 	var c = id.substring(27);
+ 	var current_id = c.slice(0,c.indexOf("_"));
+ 	var returndata = "#" + id.substring(0,27);
+	var cost_price = parseFloat($(returndata + current_id + "_item_unit_price").val());
+	var quantity =  $(returndata + current_id + "_quantity_purchased").val();
+	var discount_percent = parseFloat($(returndata + current_id + "_discount_percent").val());
+	if (discount_percent < 0)	 discount_percent = 0 ;
+	total  =  (cost_price * quantity) - ((cost_price * quantity) * (discount_percent/100))
+	$(returndata + current_id + "_amount").val(total);
+ }
+
+ function removediv(link){
+ 	var size = $("#receive_append #receive").size();
+ 	if (size == 1) return false;
+ 	 $(link).closest(".receive").remove();
+ }
+
+ function removediv2(link){
+ 	var size = $("#append div#salediv").size();
+ 	 if ( size == 1 ) return false;
+ 	$(link).closest("#salediv").remove();
  }
 

@@ -8,6 +8,10 @@ class CreateReceivings < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :receivings, :employee_id
+    add_index :receivings, :supplier_id
+
   end
 
   def self.down

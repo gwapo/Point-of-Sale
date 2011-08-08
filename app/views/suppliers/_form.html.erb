@@ -1,3 +1,4 @@
+<div id="item_container">
 <%= form_for(@supplier) do |f| %>
   <% if @supplier.errors.any? %>
     <div id="error_explanation">
@@ -12,39 +13,41 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :company_name %><br />
+    <%= f.label :company_name %>
     <%= f.text_field :company_name %>
   </div>
   <div class="field">
-    <%= f.label :first_name %><br />
+    <%= f.label :first_name %>
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :middle_name %><br />
+    <%= f.label :middle_name %>
     <%= f.text_field :middle_name %>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name %>
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :phone_number %><br />
+    <%= f.label :phone_number %>
     <%= f.text_field :phone_number %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label :address %>
     <%= f.text_field :address %>
   </div>
-  <div class="field">
-    <%= f.label :comments %><br />
+  <div class="fieldtextarea">
+    <%= f.label :comments %>
     <%= f.text_area :comments, :rows => 4 %>
   </div>
   <div class="actions">
+    <label>&nbsp;</label>
     <%= f.submit %>
   </div>
 <% end %>
+</div>
 

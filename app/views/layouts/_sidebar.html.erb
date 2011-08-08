@@ -1,0 +1,79 @@
+          <% content_for(:sidebar)  do%>
+
+            <% if controller_name == 'receivings' %>
+
+            <ul>
+                 <li> <%= link_to 'Receive', new_receiving_path %> </li>
+            </ul>
+
+            <% elsif controller_name == 'reports' %> <!-- else controller_name  -->
+              <h3>Sales</h3>
+              <ul>
+                <li> <%= link_to 'All', reports_sales_path %> </li>
+                <li> <%= link_to 'Customer', reports_customersales_path %> </li>
+                <li> <%= link_to 'Employee', reports_employeesales_path %> </li>
+
+              </ul>
+              <h3>Inventory</h3>
+              <ul>
+                <li> <%= link_to 'Low Inventory', reports_lowinventory_path %> </li>
+                <li> <%= link_to 'High Inventory', reports_highinventory_path %> </li>
+                <li> <%= link_to 'Item History', reports_itemsearch_path %> </li>
+              </ul>
+             <!--
+              <h3>Accounts</h3>
+              <ul>
+                <li> <%#= link_to 'Account Receivables', accounts_path %> </li>
+              </ul>
+              --->
+               <h3>Order</h3>
+              <ul>
+                <li> <%= link_to 'Orders', purchase_sales_path %> </li>
+              </ul>
+            <% elsif controller_name == "items" %>
+              <ul>
+                <li> <%= link_to 'Items', items_path %> </li>
+                <li> <%= link_to 'New Item', new_item_path %> </li>
+              </ul>
+            <% elsif controller_name == "customers" %>
+
+              <ul>
+                 <li><%= link_to "Customers", customers_path %></li>
+                 <li><%= link_to 'New Customer', new_customer_path %></li>
+              </ul>
+            <% elsif controller_name == 'employees' %>
+
+              <ul>
+                 <li><%= link_to "Employees", employees_path %></li>
+                 <li><%= link_to 'New Employee', new_employee_path %></li>
+              </ul>
+            <% elsif controller_name == 'sales' %>
+
+              <ul>
+                <li> <%= link_to 'New Sale', new_sale_path %> </li>
+                <li> <%= link_to 'Return Item', sale_return_sales_path %> </li>
+                <li> <%= link_to 'Sales', sales_path %> </li>
+                <li> <%= link_to 'Orders', purchase_sales_path %> </li>
+              </ul>
+
+          <% elsif controller_name == 'suppliers' %>
+
+              <ul>
+                 <li><%= link_to "Suppliers", suppliers_path %></li>
+                 <%= link_to 'New Supplier', new_supplier_path %>
+              </ul>
+
+            <% elsif controller_name == 'store_configs' %>
+               <% if @store_configs %>
+
+                <% if @store_configs.count == 0 %>
+                <ul>
+                      <li><%= link_to 'Add Store Configuration', new_store_config_path %></ul>
+                </ul>
+                <% end %>
+
+              <% end %>
+            <% end %> <!-- eof controller_name -->
+
+          <% end %> <!-- eof content_for :sidebar -->
+

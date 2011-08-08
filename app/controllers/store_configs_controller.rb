@@ -1,6 +1,7 @@
 class StoreConfigsController < ApplicationController
-     layout "twocolumn"
+    # layout "twocolumn"
     before_filter :getPageTitle
+    before_filter :queryStore, :except => [:index, :new, :create]
 
   # GET /store_configs
   # GET /store_configs.xml
@@ -16,7 +17,6 @@ class StoreConfigsController < ApplicationController
   # GET /store_configs/1
   # GET /store_configs/1.xml
   def show
-    @store_config = StoreConfig.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,7 +37,6 @@ class StoreConfigsController < ApplicationController
 
   # GET /store_configs/1/edit
   def edit
-    @store_config = StoreConfig.find(params[:id])
   end
 
   # POST /store_configs
@@ -59,7 +58,6 @@ class StoreConfigsController < ApplicationController
   # PUT /store_configs/1
   # PUT /store_configs/1.xml
   def update
-    @store_config = StoreConfig.find(params[:id])
 
     respond_to do |format|
       if @store_config.update_attributes(params[:store_config])
@@ -75,7 +73,6 @@ class StoreConfigsController < ApplicationController
   # DELETE /store_configs/1
   # DELETE /store_configs/1.xml
   def destroy
-    @store_config = StoreConfig.find(params[:id])
     @store_config.destroy
 
     respond_to do |format|
@@ -88,6 +85,9 @@ private
 
     def getPageTitle
         @pagetitle = "Store Configuration"
+    end
+    def queryStore
+        @store_config = StoreConfig.find(params[:id])
     end
 end
 

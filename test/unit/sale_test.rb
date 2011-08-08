@@ -8,6 +8,7 @@ class SaleTest < ActiveSupport::TestCase
 end
 
 
+
 # == Schema Information
 #
 # Table name: sales
@@ -17,9 +18,11 @@ end
 #  employee_id  :integer(4)
 #  comments     :text
 #  payment_type :string(255)
-#  amount       :integer(10)
+#  amount       :decimal(8, 2)   default(0.0)
+#  change       :decimal(8, 2)   default(0.0)
 #  created_at   :datetime
 #  updated_at   :datetime
 #  sales_type   :boolean(1)      default(FALSE)
+#  order        :boolean(1)      default(TRUE)
 #
 

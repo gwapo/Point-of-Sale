@@ -1,45 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div id="item_container">
 
 <p>
-  <b>Company name:</b>
-  <%= @supplier.company_name %>
+  <label>Company name:</label>
+  <span><%= @supplier.company_name %></span>
 </p>
 
 <p>
-  <b>First name:</b>
-  <%= @supplier.first_name %>
+  <label>First name:</label>
+  <span><%= @supplier.first_name %></span>
 </p>
 
 <p>
-  <b>Middle name:</b>
-  <%= @supplier.middle_name %>
+  <label>Middle name:</label>
+  <span><%= @supplier.middle_name %></span>
 </p>
 
 <p>
-  <b>Last name:</b>
-  <%= @supplier.last_name %>
+  <label>Last name:</label>
+  <span><%= @supplier.last_name %></span>
 </p>
 
 <p>
-  <b>Email:</b>
-  <%= @supplier.email %>
+  <label>Email:</label>
+  <span><%= @supplier.email %></span>
 </p>
 
 <p>
-  <b>Phone number:</b>
-  <%= @supplier.phone_number %>
+  <label>Phone number:</label>
+  <span><%= @supplier.phone_number %></span>
 </p>
 
 <p>
-  <b>Address:</b>
-  <%= @supplier.address %>
+  <label>Address:</label>
+  <span><%= @supplier.address %></span>
 </p>
 
 <p>
-  <b>Comments:</b>
-  <%= @supplier.comments %>
+  <label>Comments:</label>
+  <span><%= @supplier.comments %></span>
+</p>
+<p>
+  <label>&nbsp;</label>
+  <span><%= link_to 'Edit', edit_supplier_path(@supplier), :class => "link" %> </span>
 </p>
 
-
-<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
-<%= link_to 'Back', suppliers_path %>

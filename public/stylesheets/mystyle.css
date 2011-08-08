@@ -104,17 +104,76 @@ ul{
 .aligncenter{
 	text-align:center;
 }
-td{
-	padding:0 10px;
+ .shortlabel{
+		width:80px;
+		display:block;
+	 }
+	.longlabel{
+		width:115px;
+		display:block;
+	 }
+	 .itemlabel{
+		width:180px;
+		display:block;
+	 }
+/***************************************************
+TABLE
+***************************************************/
+
+table , table th, table td{
+	border-collapse: collapse;
+	padding: 8px 10px  8px 8px;
+	border-right:1px solid #FFFFFF;
+}
+table th{
+  min-width: 140px;
+  color: #003399;
+  font:normal 13px  "Lucida Sans Unicode";
+  background:none repeat scroll 0 0 #B9C9FE;
+  border-bottom:1px solid #FFFFFF;
+}
+table td{
+	min-width:100px;
+	background:none repeat scroll 0 0 #E8EDFF;
+	border-bottom:1px solid #FFFFFF;
+	color:#666699;
+	font:normal 12px  "Lucida Sans Unicode";
+}
+
+table tr:hover td{
+  background:none repeat scroll 0 0 #D0DAFD;
 }
 
 table.shorttable, table.shorttable th, table.shorttable td{
-		border:1px solid black;
 		border-collapse: collapse;
 	}
 table.shorttable td, table.shorttable th{
 	min-width:90px;
-	padding: 0 10px;
+	padding: 8px 10px;
+}
+/*************************************************
+TEXT
+*************************************************/
+body{
+	font:normal 12px  "Lucida Sans Unicode";
+	color: black;
+}
+b{
+	font: bold 13px "Lucida Sans Unicode";
+}
+p span{
+	color: black;
+	font: normal 13px "Lucida Sans Unicode";
+}
+h1{
+	color: black;
+	padding-left: 180px;
+}
+input[type='submit'], .link{
+	border:1px solid #003399;
+	background-color:#B9C9FE;
+	color:white;
+	padding: 5px 10px;
 }
 /************************ *************************
 	LEFT SIDE MENU
@@ -123,18 +182,17 @@ table.shorttable td, table.shorttable th{
 	position:relative;
 	min-height:400px;
 }
-#contentLeft ul#mymenu { /* remove bullets and list indents */
+#contentLeft ul#mymenu { /* remove bullets and list indent */
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	/*background-color:red;*/
 }
 
-#contentLeft ul#mymenu li{ /* remove bullets and list indents */
+#contentLeft ul#mymenu li{ /* remove bullets and list indent */
 	min-width:200px;
 }
 
-#contentLeft ul#mymenu a{ /* remove bullets and list indents */
+#contentLeft ul#mymenu a{ /* remove bullets and list indent */
 	min-width:200px;
 }
 /************************ *************************
@@ -142,28 +200,42 @@ table.shorttable td, table.shorttable th{
 **************************************************/
 #mainLeftSales{
 	float:left;
-	width: 600px;
+	width: 700px;
 	position:relative;
 
 }
 #mainRightSales{
 	position:relative;
-	margin: 0 0 0 600px;
+	margin: 0 0 0 700px;
 	width:200px;
 }
 	#sales_label li{
 		display:block;
 		float:left;
-		width:115px;
 		text-align:center;
+		background:#B9C9FE;
+		border-right:1px solid white;
+		padding:5px 0;
+		color: black;
+	  	font:normal 12px  "Lucida Sans Unicode";
 	}
-	table.sales, table.sales th, table.sales td{
-		border:1px solid black;
-		border-collapse: collapse;
+	#salediv .sale_deleteitem{
+		text-align:center;
+		padding: 0 20px;
 	}
-	table.sales th{
-		min-width: 150px;
+	#salediv .item_name{
+		width:172px;
 	}
+	#salediv .item_unit_price{
+		width:105px;
+	}
+	#salediv .quantity_purchased{
+		width:73px;
+	}
+	#salediv .discount_percent, #salediv .amount{
+		width:105px;
+	}
+
 /************************ *************************
 	RECEIVING
 **************************************************/
@@ -178,22 +250,35 @@ table.shorttable td, table.shorttable th{
 	margin: 0 0 0 700px;
 	width:150px;
 }
+#receive_append{
+	margin-top:5px;
+}
 #receiving_label li{
 	display:block;
 	float:left;
 	text-align:center;
+	background:#B9C9FE;
+	border-right:1px solid white;
+	padding:5px 0;
+	color: black;
+  	font:normal 12px  "Lucida Sans Unicode";
 }
-	.r_quantity, .r_unit_price, .r_unit_cost, .r_discount{
-		width:70px;
+	.r_quantity, .r_unit_cost, .r_discount{
+		width:60px;
+		text-align:right;
+		padding-right:10px;
 	}
-	 .shortlabel{
-		width:80px;
-		display:block;
+	.r_amount, .r_cost_price{
+		text-align:right;
+		padding-right:10px;
+	}
+	.r_amount, .r_cost_price{
+		width:99px;
+	}
+	 .r_name{
+	 	width:171px;
 	 }
-	.longlabel{
-		width:115px;
-		display:block;
-	 }
+
 	.receiving_deleteitem{
 		width:80px;
 		display:block; clear:left; float:left;line-height: 23px;
@@ -203,10 +288,65 @@ table.shorttable td, table.shorttable th{
 		background-color:white;
 		color:black;
 	}
-	.r_amount0_{
-	}
+#receive .r_name{
+	margin-left:20px;
+
+}
+#receive .item_id{
+	text-align:center;
+	padding-left: 20px;
+}
+
 
 /*************************************
-	GLOBAL 2
+	ITEM
 *************************************/
+#item_container p{
+	line-height: 30px;
+}
+#item_container span{
+	padding-left:10px;
+}
+#item_container{
+	background-color:#E8EDFF;
+	width:600px;
+}
+#item_container .field, #item_container p{
+	height: 30px;
+	border-bottom: 1px solid white;
+}
+#item_container .fieldtextarea{
+	height: 85px;
+	border-bottom: 1px solid white;
+}
+#item_container .actions{
+	height: 50px;
+	border-bottom: 1px solid white;
+}
+#item_container label{
+	float:left;
+	width:140px;
+	text-align:right;
+	padding-right:10px;
+	border-right: 1px solid white;
+	padding: 7px 10px 8px 0;
+	line-height: 15px;
+	background-color: #B9C9FE;
+}
+#item_container .fieldtextarea label{
+	padding: 35px 10px 35px 0;
+}
+#item_container .actions label{
+	padding: 19px 10px 16px 0;
+}
+
+
+#item_container input[type='text'], #item_container textarea, #item_container select{
+	width:220px;
+	margin-left: 15px;
+	margin-top: 3px;
+}
+#item_container input[type='submit']{
+	margin: 10px 0 0 15px;
+}
 

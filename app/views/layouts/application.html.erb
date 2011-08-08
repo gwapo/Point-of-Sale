@@ -2,15 +2,113 @@
 <html>
 <head>
   <title>POS</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-
-  <%= csrf_meta_tag %>
+  <%= render 'layouts/cssandjs' %>
 </head>
 <body>
-<%= render 'layouts/header' %>
-<%= yield %>
-  <%= debug(params) if Rails.env.development? %>
+<div id="contentPage">
+    <div>
+      <%= render 'layouts/header' %>
+      <br /><br />
+    </div>
+    <div>
+      <div id="contentLeft" >
+        <%= render 'layouts/sidebar' %>
+        <%= yield :sidebar %>
+      </div>
+      <div id="contentRight">
+        <%= yield %>
+      </div>
+    </div>
+      <%= debug(params) if Rails.env.development? %>
+</div>
 </body>
 </html>
+<script>
+$(document).ready(function()
+{
+
+    $('div.sales_search #search').change(function(){
+    var search_type = $(this).val();
+
+          if(search_type == 'Yearly'){
+            $('div.supplier_search input[type="submit"]').removeAttr("disabled");
+
+            $("#date_year").show();
+            $("#date_year").removeAttr("disabled");
+
+            $("#date_month, #start_date ,#end_date").hide();
+            $("#date_month, #start_date ,#end_date").attr("disabled","disabled");
+            $("div.sales_search input[type='submit']").removeAttr('disabled');
+
+          }else if(search_type == 'Monthly'){
+            $('div.supplier_search input[type="submit"]').removeAttr("disabled");
+            $("#date_month, #date_year").show();
+            $("#date_month, #date_year").removeAttr("disabled");
+
+            $("#start_date ,#end_date").attr("disabled","disabled");
+            $("#start_date ,#end_date").hide();
+            $("div.sales_search input[type='submit']").removeAttr('disabled');
+
+          }else if(search_type == 'Specific Date'){
+            $('div.supplier_search input[type="submit"]').removeAttr("disabled");
+
+            $("#start_date, #end_date").show();
+            $("#start_date, #end_date").removeAttr("disabled");
+
+            $("#date_month, #date_year").hide();
+            $("#date_year, #date_month").attr("disabled","disabled");
+
+            $("div.sales_search input[type='submit']").removeAttr('disabled');
+
+          }else{
+
+             sale.hideSaleButton();
+
+
+          }
+
+
+
+    });
+
+    var sale = {
+
+      hideSaleButton: function(){
+         $("#date_month, #date_year, #start_date ,#end_date").attr("disabled","disabled");
+         $("#date_month, #date_year, #start_date ,#end_date").hide();
+         $("div.sales_search input[type='submit']").attr('disabled','disabled');
+       }
+
+    };
+
+    //initialize
+   sale.hideSaleButton();
+
+
+});
+</script>
+<style>
+a.dp-choose-date {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(calendar.png) no-repeat;
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
+}
+</style>
 
