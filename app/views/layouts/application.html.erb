@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>POS</title>
+  <title>Point Of Sale</title>
   <%= render 'layouts/cssandjs' %>
 </head>
 <body>
 <div id="contentPage">
-    <div>
-      <%= render 'layouts/header' %>
-      <br /><br />
-    </div>
+    <div id="pageTop">
+        <div id="menuContainer">
+          <%= render 'layouts/header' %>
+        </div>
+    </div><!-- eof pageTop -->
+    <div id="pageTopBlank">
+      &nbsp;
+    </div><!-- eof pageTop -->
     <div>
       <div id="contentLeft" >
+        <br /><br />
         <%= render 'layouts/sidebar' %>
         <%= yield :sidebar %>
-      </div>
+      </div><!--eof contentLeft -->
       <div id="contentRight">
         <%= yield %>
       </div>

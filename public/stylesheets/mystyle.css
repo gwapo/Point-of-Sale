@@ -64,8 +64,22 @@ div{padding:0;border:0;margin:0;}
 *******************************************/
 #contentPage{
 	margin: 0 auto;
-	width: 1300px;
+	width: 1150px;
 	min-height: 500px;
+	background-color:white;
+}
+#pageTop{
+	height:60px;
+	position:relative;
+}
+	#menuContainer{
+		height:30px;
+		position:absolute;
+		top:10px;
+		right:40px;
+	}
+#pageTopBlank{
+	height:15px;
 }
 #contentMain{
 	margin: 0 auto;
@@ -117,6 +131,22 @@ ul{
 		display:block;
 	 }
 /***************************************************
+	MENU
+***************************************************/
+ul#menu li {
+	float:left;
+}
+ul#menu li  a{
+	display:block;
+	padding:0 10px;
+	color:black;
+	font-size: 13px;
+}
+ul#menu li  a:hover{
+	color:white;
+}
+
+/***************************************************
 TABLE
 ***************************************************/
 
@@ -151,12 +181,19 @@ table.shorttable td, table.shorttable th{
 	min-width:90px;
 	padding: 8px 10px;
 }
+
+.fixedtable{
+	width:150px;
+}
+
+
 /*************************************************
 TEXT
 *************************************************/
 body{
 	font:normal 12px  "Lucida Sans Unicode";
 	color: black;
+	background-color: #E8EDFF;
 }
 b{
 	font: bold 13px "Lucida Sans Unicode";
@@ -167,7 +204,6 @@ p span{
 }
 h1{
 	color: black;
-	padding-left: 180px;
 }
 input[type='submit'], .link{
 	border:1px solid #003399;
@@ -182,18 +218,42 @@ input[type='submit'], .link{
 	position:relative;
 	min-height:400px;
 }
-#contentLeft ul#mymenu { /* remove bullets and list indent */
+#contentLeft h3{
+	padding:8px 0;
+	margin: 0 0 0 10px;
+}
+#contentLeft ul { /* remove bullets and list indent */
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	border-top:1px solid #003399;
+	border-right:1px solid #003399;
+	border-left:1px solid #003399;
+	width:168px;
+	margin: 0 0 0 10px;
 }
 
-#contentLeft ul#mymenu li{ /* remove bullets and list indent */
-	min-width:200px;
+#contentLeft ul li{ /* remove bullets and list indent */
+	min-width:100px;
 }
 
-#contentLeft ul#mymenu a{ /* remove bullets and list indent */
-	min-width:200px;
+
+#contentLeft ul a{ /* remove bullets and list indent */
+	border-bottom:1px solid #003399;
+	background-color:#B9C9FE;
+	display:block;
+	width:158px;
+	text-decoration:none;
+	padding: 8px 0 8px 10px;
+	color: #003399;
+}
+
+#contentLeft ul a:hover{ /* remove bullets and list indent */
+	background-color:white;
+	width:158px;
+	text-decoration:none;
+	padding: 8px 0 8px 10px;
+	color: black;
 }
 /************************ *************************
 	SALES
@@ -209,6 +269,9 @@ input[type='submit'], .link{
 	margin: 0 0 0 700px;
 	width:200px;
 }
+	#mainRightSales textarea{
+		width: 200px;
+	}
 	#sales_label li{
 		display:block;
 		float:left;
@@ -218,6 +281,9 @@ input[type='submit'], .link{
 		padding:5px 0;
 		color: black;
 	  	font:normal 12px  "Lucida Sans Unicode";
+	}
+	#sales_label {
+		margin:  0 0 5px 0;
 	}
 	#salediv .sale_deleteitem{
 		text-align:center;
