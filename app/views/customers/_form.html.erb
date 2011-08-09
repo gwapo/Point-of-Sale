@@ -29,7 +29,7 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :street_address %>
+    <%= f.label :street_address, "Street Address" %>
     <%= f.text_field :street_address %>
   </div>
   <div class="field">
@@ -52,6 +52,7 @@
   <div class="actions">
     <label>&nbsp;</label>
     <%= f.submit %>
+    <%= link_to 'Show', @customer, :class => "link"  unless @customer.new_record? %>
   </div>
 <% end %>
 </div>

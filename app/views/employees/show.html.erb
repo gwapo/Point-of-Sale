@@ -1,30 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>First name:</b>
-  <%= @employee.first_name %>
+  <label>Name:</label>
+  <span><%= fullname2(@employee) %></span>
 </p>
 
 <p>
-  <b>Middle name:</b>
-  <%= @employee.middle_name %>
+  <label>Email:</label>
+  <span><%= @employee.email %></span>
 </p>
 
 <p>
-  <b>Last name:</b>
-  <%= @employee.last_name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @employee.email %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @employee.address %>
+  <label>Address:</label>
+  <span><%= @employee.address %></span>
 </p>
 
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>
+

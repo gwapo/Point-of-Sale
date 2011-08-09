@@ -1,31 +1,35 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Sales Information</h1>
+<br />
+<div id="info">
 <p>
-  <b>Date Purchased:</b>
-  <%= @sale.created_at %>
+  <label>Date Purchased</label>
+  <span><%= @sale.created_at %></span>
 </p>
 <p>
-  <b>Customer:   <%= fullname(@sale.customer) unless @sale.customer.blank? %>
-</p>
-
-<p>
-  <b>Employee: <%= fullname(@sale.employee) unless @sale.employee.blank? %>
+  <label>Customer</label>
+   <span> <%= fullname(@sale.customer) unless @sale.customer.blank? %></span>
 </p>
 
 <p>
-  <b>Comments:</b>
-  <%= @sale.comments %>
+  <label>Employee</label>
+   <span><%= fullname(@sale.employee) unless @sale.employee.blank? %></span>
 </p>
 
 <p>
-  <b>Payment type:</b>
-  <%= @sale.payment_type %>
+  <label>Comments</label>
+  <span><%= @sale.comments %></span>
 </p>
 
 <p>
-  <b>Amount:</b>
-  <%= @sale.amount %>
+  <label>Payment type</label>
+  <span><%= @sale.payment_type %></span>
 </p>
+
+<p>
+  <label>Amount:</label>
+  <span><%= @sale.amount %></span>
+</p>
+</div>
 <br />
 
 <table class='sales'>
@@ -40,7 +44,7 @@
 <% @sale.sale_items.each do |item| %>
   <tr>
     <td><%= item.item.name %></td>
-    <td><%= item.quantity_purchased %></td>
+    <td class='alignright'><%= item.quantity_purchased %></td>
     <td class='alignright'><%= item.item_unit_price %></td>
     <td class='alignright'><%= item.discount_percent %></td>
     <td class='alignright'><%= amount_total(item.item_unit_price, item.quantity_purchased, 0) %></td>

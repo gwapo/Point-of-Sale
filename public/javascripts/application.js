@@ -57,17 +57,13 @@ $(function(){
 	 var name_attributes = 'sale[sale_items_attributes][';
 
 	 var r_item_delete = newDiv.children('.receiving_deleteitem').attr('id','sale_deleteitem' + newNum)
-	 var item_name = newDiv.children('.item_name').attr('id', sale_attributes + newNum + '_name').attr('name', name_attributes + newNum +'][name]');
-	 var item_id = newDiv.children('.item_id').attr('id', sale_attributes + newNum + '_item_id').attr('name', name_attributes + newNum +'][item_id]');
-     var quantity_purchased = newDiv.children('.quantity_purchased').attr('id', sale_attributes + newNum + '_quantity_purchased').attr('name', name_attributes + newNum +'][quantity_purchased]');
-     var item_unit_price = newDiv.children('.item_unit_price').attr('id', sale_attributes + newNum +'_item_unit_price').attr('name', name_attributes + newNum +'][item_unit_price]');
-     var discount_percent = newDiv.children('.discount_percent').attr('id', sale_attributes + newNum +'_discount_percent').attr('name', name_attributes + newNum +'][discount_percent]');
-	var amount = newDiv.children('#amount0_').attr('id', 'amount' + newNum + "_")
+	 var item_name = newDiv.children('.item_name').attr('id', sale_attributes + newNum + '_name').attr('name', name_attributes + newNum +'][name]').val("");
+	 var item_id = newDiv.children('.item_id').attr('id', sale_attributes + newNum + '_item_id').attr('name', name_attributes + newNum +'][item_id]').val("");
+     var quantity_purchased = newDiv.children('.quantity_purchased').attr('id', sale_attributes + newNum + '_quantity_purchased').attr('name', name_attributes + newNum +'][quantity_purchased]').val( 0 );
+     var item_unit_price = newDiv.children('.item_unit_price').attr('id', sale_attributes + newNum +'_item_unit_price').attr('name', name_attributes + newNum +'][item_unit_price]').val( 0 );
+     var discount_percent = newDiv.children('.discount_percent').attr('id', sale_attributes + newNum +'_discount_percent').attr('name', name_attributes + newNum +'][discount_percent]').val( 0 );
+	var amount = newDiv.children('#amount0_').attr('id', 'amount' + newNum + "_").val( 0 );
 
-
-
-	//set all clone fields to blank
-	newDiv.children().val('');
 
      //add box
      $("#append").append(newDiv);

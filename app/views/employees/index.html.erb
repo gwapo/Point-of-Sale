@@ -5,15 +5,15 @@
     <th>Name </th>
     <th>Email</th>
     <th>Address</th>
-    <th></th>
+    <th class='aligncenter'>Action</th>
   </tr>
 
 <% @employees.each do |employee| %>
   <tr>
-    <td><%= employee.first_name %> <%= employee.middle_name %> <%= employee.last_name %></td>
+    <td><%= fullname2(employee) %></td>
     <td><%= employee.email %></td>
     <td><%= employee.address %></td>
-    <td>
+    <td class='aligncenter'>
     <%= link_to 'Edit', edit_employee_path(employee) %>
     <%= link_to 'Destroy', employee, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

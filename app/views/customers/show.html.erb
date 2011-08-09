@@ -1,51 +1,51 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Customer Information</h1>
+<br />
+<div id="item_container">
 <p>
-  <b>First name:</b>
-  <%= @customer.first_name %>
+  <label>Name </label>
+  <span><%= fullname(@customer) %></span>
 </p>
 
 <p>
-  <b>Last name:</b>
-  <%= @customer.last_name %>
+  <label>Phone number </label>
+  <span><%= @customer.phone_number %></span>
 </p>
 
 <p>
-  <b>Phone number:</b>
-  <%= @customer.phone_number %>
+  <label>Email </label>
+  <span><%= @customer.email %></span>
 </p>
 
 <p>
-  <b>Email:</b>
-  <%= @customer.email %>
+  <label>Street Address </label>
+  <span><%= @customer.street_address %></span>
 </p>
 
 <p>
-  <b>Street address:</b>
-  <%= @customer.street_address %>
+  <label>City </label>
+  <%= @customer.city %></span>
 </p>
 
 <p>
-  <b>City:</b>
-  <%= @customer.city %>
+  <label>State </label>
+  <span><%= @customer.state %></span>
 </p>
 
 <p>
-  <b>State:</b>
-  <%= @customer.state %>
+  <label>Country </label>
+  <span><%= I18n.t @customer.country, :scope => 'countries' %></span>
 </p>
 
 <p>
-  <b>Country:</b>
- <%= I18n.t @customer.country, :scope => 'countries' %>
+  <label>Comments </label>
+  <span><%= @customer.comments %></span>
 </p>
-
 <p>
-  <b>Comments:</b>
-  <%= @customer.comments %>
+  <label>&nbsp;</label>
+  <span><%= link_to 'Edit', edit_customer_path(@customer), :class => "link" %>
+</span>
 </p>
 
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+</div>
 

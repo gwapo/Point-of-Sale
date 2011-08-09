@@ -11,7 +11,7 @@
 
 <% @customers.each do |customer| %>
   <tr>
-    <td><%= customer.first_name %> <%= customer.last_name %></td>
+    <td><%=  fullname(customer) %></td>
     <td><%= customer.phone_number %></td>
     <td><%= customer.email %></td>
 

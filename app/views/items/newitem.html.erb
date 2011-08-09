@@ -1,4 +1,5 @@
-<%= form_for(@item) do |f| %>
+<div id="item_container">
+<%= form_for(@item, :url => :create_item_items ) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -12,41 +13,43 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :category %><br />
+    <%= f.label :category %>
     <%= f.text_field :category %>
   </div>
   <div class="field">
-    <%= f.label :supplier_id %><br />
-    <%= f.select :supplier_id, @suppliers.map { |s| [s.company_name, s.id] }, {:prompt => 'Select Supplier'},
+    <%= f.label :supplier_id %>
+    <%= f.select :supplier_id, Supplier.all.map { |s| [s.company_name, s.id] }, {:prompt => 'Select Supplier'},
                               :selected => @item.supplier_id   %>
 
   </div>
-  <div class="field">
-    <%= f.label :descriptions %><br />
-    <%= f.text_area :descriptions %>
+  <div class="fieldtextarea">
+    <%= f.label :descriptions %>
+    <%= f.text_area :descriptions, :rows => 4 %>
   </div>
   <div class="field">
-    <%= f.label :cost_price %><br />
+    <%= f.label :cost_price %>
     <%= f.text_field :cost_price %>
   </div>
   <div class="field">
-    <%= f.label :unit_cost %><br />
+    <%= f.label :unit_cost %>
     <%= f.text_field :unit_cost %>
   </div>
   <div class="field">
-    <%= f.label :quantity %><br />
+    <%= f.label :quantity %>
     <%= f.text_field :quantity, :value => 0, :readonly => "readonly" %>
   </div>
    <div class="field">
-    <%= f.label :reorder_level %><br />
+    <%= f.label :reorder_level %>
     <%= f.text_field :reorder_level %>
   </div>
   <div class="actions">
+    <label>&nbsp;</label>
     <%= f.submit %>
   </div>
 <% end %>
+</div>
 

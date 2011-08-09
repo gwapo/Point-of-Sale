@@ -12,13 +12,13 @@
 
 <% @sales.each do |sale| %>
   <tr>
-    <td><%= sale.id %></td>
+    <td class='aligncenter'><%= sale.id %></td>
     <td><%= fullname(sale.customer) unless sale.customer.blank? %></td>
     <td><%= fullname(sale.employee) unless sale.employee.blank? %></td>
     <td><%= sale.comments %></td>
 
-    <td><%= sale.payment_type %></td>
-    <td><%= sale.amount %></td>
+    <td class='alignright'><%= sale.payment_type %></td>
+    <td class='alignright'><%= sale.amount %></td>
     <td><%= link_to 'Purchase Order', sale %> | <%= link_to 'Purchase Order(PDF)', sale %>
     <%= link_to 'Edit', edit_sale_path(sale) %>
     <%#= link_to 'Destroy', sale, :confirm => 'Are you sure?', :method => :delete %></td>

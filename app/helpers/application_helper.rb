@@ -4,6 +4,10 @@ module ApplicationHelper
        (name.first_name + " " + name.last_name).titleize
    end
 
+   def fullname2(name)
+       (name.first_name + " " +  name.middle_name + " " + name.last_name).titleize
+   end
+
     def sub_total(cost_price, quantity )
         (cost_price.to_f * quantity.to_i )
     end

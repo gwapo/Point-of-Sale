@@ -14,7 +14,7 @@
       <div id="salediv">
         <%= link_to "Delete" , "#",:id => :sale_deleteitem0, :class => :sale_deleteitem, :onclick => "removediv2(this)"  %>
         <%= f.text_field :name, :class => "item_name",  :onkeyup => "create_autocomplete(this.id)"  %>
-        <%= f.text_field :item_unit_price, :class => "item_unit_price" %>
+        <%= f.text_field :item_unit_price, :readonly => "readonly", :class => "item_unit_price" %>
         <%= f.text_field :quantity_purchased, :class => "quantity_purchased",:onkeyup => "getthefield2(this.id)" %>
         <%= f.text_field :discount_percent, :class => "discount_percent" %>
         <%= f.text_field :amount, :class => "amount", :readonly => "readonly" %>

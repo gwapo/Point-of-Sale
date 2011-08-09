@@ -102,8 +102,24 @@ class ItemsController < ApplicationController
     @item = Item.new
     @suppliers = Supplier.all
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.xml  { render :xml => @item }
+    end
+  end
+
+  # POST /items
+  # POST /items.xml
+  def create_item
+    @item = Item.new(params[:item])
+
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to(@item, :notice => 'Item was successfully created.') }
+        format.xml  { render :xml => @item, :status => :created, :location => @item }
+      else
+        format.html { render :action => "newitem" }
+        format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
+      end
     end
   end
 

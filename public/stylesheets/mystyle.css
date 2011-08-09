@@ -62,6 +62,9 @@ div{padding:0;border:0;margin:0;}
 /*******************************************
 	END RESET
 *******************************************/
+body{
+	font: normal 12px ariel;
+}
 #contentPage{
 	margin: 0 auto;
 	width: 1150px;
@@ -141,6 +144,8 @@ ul#menu li  a{
 	padding:0 10px;
 	color:black;
 	font-size: 13px;
+	text-decoration: none;
+	font-weight: bold;
 }
 ul#menu li  a:hover{
 	color:white;
@@ -363,6 +368,9 @@ input[type='submit'], .link{
 	padding-left: 20px;
 }
 
+#mainRightReceiving textarea{
+		width: 200px;
+	}
 
 /*************************************
 	ITEM
@@ -414,5 +422,35 @@ input[type='submit'], .link{
 }
 #item_container input[type='submit']{
 	margin: 10px 0 0 15px;
+}
+/**********************************
+INFO
+**********************************/
+#info p{
+	line-height: 25px;
+}
+#info span{
+	padding-left:10px;
+}
+#info{
+	background-color:#E8EDFF;
+	width:400px;
+}
+#info .field, #info p{
+	height: 25px;
+	border-bottom: 1px solid white;
+}
+
+
+#info label{
+	float:left;
+	width:140px;
+	text-align:right;
+	padding-right:10px;
+	border-right: 1px solid white;
+	padding: 5px 10px 5px 0;
+	line-height: 15px;
+	background-color: #B9C9FE;
+	font-weight: bold;
 }
 

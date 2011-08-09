@@ -37,6 +37,7 @@ Mypos::Application.routes.draw do
     collection do
        get 'itemlist'
        get 'newitem'
+       post :create_item
      end
   end
 

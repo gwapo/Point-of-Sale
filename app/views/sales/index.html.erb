@@ -2,6 +2,7 @@
 <br />
 <table class='shorttable'>
   <tr>
+    <th>OR Number</th>
     <th>Customer</th>
     <th>Employee</th>
     <th>Comments</th>
@@ -12,6 +13,7 @@
 
 <% @sales.each do |sale| %>
   <tr>
+    <td class='aligncenter'><%= sale.id %></td>
     <td><%= fullname(sale.customer) unless sale.customer.blank? %></td>
     <td><%= fullname(sale.employee) unless sale.employee.blank? %></td>
     <td><%= sale.comments %></td>
