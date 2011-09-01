@@ -9,6 +9,7 @@ gem 'mysql2', '~> 0.2.6'
 gem "jquery-rails"
 gem "annotate"
 gem 'rails3-jquery-autocomplete'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 # Use unicorn as the web server
 # gem 'unicorn'

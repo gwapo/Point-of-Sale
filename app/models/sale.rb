@@ -31,7 +31,7 @@ private
 
                 Inventory.create :quantity =>  (self.sales_type ?  "-" : "") + item.quantity_purchased.to_s,
                                 :item_id => item.item_id,
-                                :employee_id => 1,
+                                :employee_id => current_user.id,
                                 :comment => 'POS',
                                 :amount => item.item_unit_price,
                                 :resource => SaleItem.find(item)

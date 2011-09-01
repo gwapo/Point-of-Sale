@@ -20,7 +20,7 @@ class Item < ActiveRecord::Base
              Inventory.create(
               :quantity => self.quantity,
               :item_id => self.id,
-              :employee_id => 1,
+              :employee_id => current_user.id,
               :comment => 'Add Item',
               :amount => self.cost_price,
               :resource => Item.find(self.id)

@@ -8,7 +8,10 @@
 <div id="contentPage">
     <div id="pageTop">
         <div id="menuContainer">
+        <% if current_user %>
           <%= render 'layouts/header' %>
+        <% end %>
+
         </div>
     </div><!-- eof pageTop -->
     <div id="pageTopBlank">

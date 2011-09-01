@@ -32,7 +32,7 @@ private
 
             Inventory.create :quantity => self.receive_type ? "#{ item.quantity}" : "-#{item.quantity}",
                 :item_id => item.item_id,
-                :employee_id => 1,
+                :employee_id => current_user.id,
                 :comment => 'REC',
                 :amount => item.cost_price,
                 :resource => ReceivingItem.find(item.id)

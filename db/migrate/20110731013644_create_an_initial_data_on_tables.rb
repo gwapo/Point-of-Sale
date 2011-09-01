@@ -18,10 +18,14 @@ class CreateAnInitialDataOnTables < ActiveRecord::Migration
 
       Customer.create :first_name => "johny",
                       :last_name => "joe",
+                      :phone_number => "99999999999",
+                      :city => "LTB",
                       :country => "PH"
 
       Customer.create :first_name => "jojo",
                       :last_name => "d",
+                      :phone_number => "99999999999",
+                      :city => "LTB",
                       :country => "PH"
 
 

@@ -1,4 +1,6 @@
 class InventoriesController < ApplicationController
+  before_filter :logged_in?
+
   # GET /inventories
   # GET /inventories.xml
   def index
@@ -81,3 +83,4 @@ class InventoriesController < ApplicationController
     end
   end
 end
+

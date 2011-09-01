@@ -143,9 +143,8 @@ ul#menu li  a{
 	display:block;
 	padding:0 10px;
 	color:black;
-	font-size: 13px;
+	font-size: 15px;
 	text-decoration: none;
-	font-weight: bold;
 }
 ul#menu li  a:hover{
 	color:white;
@@ -306,7 +305,9 @@ input[type='submit'], .link{
 	#salediv .discount_percent, #salediv .amount{
 		width:105px;
 	}
-
+	#sale_amount{
+		width: 100px;
+	}
 /************************ *************************
 	RECEIVING
 **************************************************/
@@ -415,7 +416,7 @@ input[type='submit'], .link{
 }
 
 
-#item_container input[type='text'], #item_container textarea, #item_container select{
+#item_container input[type='text'],#item_container input[type='password'], #item_container textarea, #item_container select{
 	width:220px;
 	margin-left: 15px;
 	margin-top: 3px;

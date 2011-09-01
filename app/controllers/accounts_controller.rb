@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+   before_filter :logged_in?
+
     layout "reports"
   # GET /accounts
   # GET /accounts.xml

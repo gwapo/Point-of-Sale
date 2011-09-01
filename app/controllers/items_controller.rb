@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_filter :logged_in?
+
   # GET /items
   # GET /items.xml
 

@@ -11,8 +11,9 @@
     <span class='link'><%= link_to "Cancel Sale", new_sale_path %></span>
     <br /><br />
   </div>
-
+  <br />
   <div class="field">
+    <label id="order"> Type </label>  &nbsp; &nbsp; &nbsp;
     <%
       if @sale.new_record?
         order = options_for_select({ "Buy" => 1, "Order" => 0 }, 1 )
@@ -22,7 +23,7 @@
       %>
     <%= f.select :order, order   %>
   </div>
-
+  <br />
   <div class="field">
     <%= f.label :comments %><br />
     <%= f.text_area :comments, :rows => 3 %>
@@ -33,12 +34,12 @@
 
 
   <div class="field">
-    <%= f.label :payment_type %><br />
+    <%= f.label :payment_type %>&nbsp;
     <%= f.select :payment_type, %w{ Cash Check Credit\ Card } %>
 
   </div>
   <div class="field">
-    <%= f.label :amount %><br />
+    <%= f.label :amount %> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     <%= f.text_field :amount, :size => 20 %>
     <%= f.hidden_field :customer_id, :value => 0, :size => 5 %>
   </div>

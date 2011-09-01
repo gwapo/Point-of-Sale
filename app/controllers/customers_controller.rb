@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_filter :logged_in?
   # GET /customers
   # GET /customers.xml
   def index

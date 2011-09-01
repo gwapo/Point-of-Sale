@@ -14,6 +14,10 @@
   <li><%=link_to 'Items', items_path %></li>
   <li>|</li>
   <li><%=link_to 'Store Configuration', store_configs_path %></li>
+  <% if current_user %>
+   <li>|</li>
+  <li> <%=link_to 'Log Out', log_out_path %></li>
+  <% end %>
 </ul>
 <div class="clearfloat"></div>
 

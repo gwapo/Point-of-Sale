@@ -1,4 +1,6 @@
 class ReceivingsController < ApplicationController
+  before_filter :logged_in?
+
   # GET /receivings
   # GET /receivings.xml
 

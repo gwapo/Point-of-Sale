@@ -1,4 +1,6 @@
 class ReceivingItemsController < ApplicationController
+  before_filter :logged_in?
+
   # GET /receiving_items
   # GET /receiving_items.xml
   def index
@@ -81,3 +83,4 @@ class ReceivingItemsController < ApplicationController
     end
   end
 end
+

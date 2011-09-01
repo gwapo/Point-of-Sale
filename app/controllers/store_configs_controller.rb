@@ -1,4 +1,5 @@
 class StoreConfigsController < ApplicationController
+    before_filter :logged_in?
     # layout "twocolumn"
     before_filter :getPageTitle
     before_filter :queryStore, :except => [:index, :new, :create]

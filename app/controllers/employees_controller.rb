@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+  before_filter :logged_in?
+
   # GET /employees
   # GET /employees.xml
   def index

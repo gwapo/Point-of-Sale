@@ -1,4 +1,6 @@
 class SalesController < ApplicationController
+  before_filter :logged_in?
+
   # GET /sales
   # GET /sales.xml
 

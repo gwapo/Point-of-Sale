@@ -1,4 +1,5 @@
 class SuppliersController < ApplicationController
+  before_filter :logged_in?
   # GET /suppliers
   # GET /suppliers.xml
   def index
